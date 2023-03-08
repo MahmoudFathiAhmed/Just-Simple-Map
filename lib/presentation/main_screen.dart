@@ -33,6 +33,12 @@ class _MainScreenState extends State<MainScreen> {
               },
               child: const Text('google maps screen'),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, Routes.dateTimeScreenRoute);
+              },
+              child: const Text('DateTime screen'),
+            ),
           ],
         ),
       ),

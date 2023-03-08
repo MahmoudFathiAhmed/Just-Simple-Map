@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:locations_work/core/routes/routes_arguments.dart';
+import 'package:locations_work/presentation/date_time_screen.dart';
 import 'package:locations_work/presentation/google_map_screen.dart';
 import 'package:locations_work/presentation/just_lat_long_screen.dart';
 import 'package:locations_work/presentation/lat_long_from_map_screen.dart';
@@ -12,6 +13,7 @@ class Routes {
   static const String noRouteFound = '/noRouteFound';
   static const String googleMapScreenRoute = '/googleMapScreenRoute';
   static const String latLongFromMapScreenRoute = '/latLongFromMapScreenRoute';
+  static const String dateTimeScreenRoute = '/dateTimeScreenRoute';
 }
 
 class AppRoutes {
@@ -28,6 +30,9 @@ class AppRoutes {
       case Routes.googleMapScreenRoute:
         return MaterialPageRoute(
             builder: (context) => const GoogleMapsScreen());
+      case Routes.dateTimeScreenRoute:
+        return MaterialPageRoute(
+            builder: (context) => const DateTimeScreen());
       //lat long from map screen
       case Routes.latLongFromMapScreenRoute:
         LatLonFromMapScreenArgs latLonFromMapScreenArgs =
