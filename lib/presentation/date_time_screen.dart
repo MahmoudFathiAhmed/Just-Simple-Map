@@ -15,6 +15,18 @@ class _DateTimeScreenState extends State<DateTimeScreen> {
   DatePickerController controller = DatePickerController();
   String mySelectedDate = '';
   String mySelectedTime = '';
+  List<int> selectedButton = [];
+  bool isButtonSelected = false;
+  void selectButton(int id) {
+    if (selectedButton.contains(id)) {
+      selectedButton.remove(id);
+      setState(() {});
+    } else {
+      selectedButton.add(id);
+      setState(() {});
+    }
+  }
+
   List<String> time = [
     '05:00 Am',
     '06:00 Am',
@@ -33,6 +45,7 @@ class _DateTimeScreenState extends State<DateTimeScreen> {
     '07:00 Pm',
     '08:00 Pm',
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,39 +80,57 @@ class _DateTimeScreenState extends State<DateTimeScreen> {
                       onTap: () {
                         mySelectedTime = time[index];
                         Get.bottomSheet(
-                          SizedBox(
-                            height: Get.height * .3,
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                    height: 42,
-                                    child: ListView.builder(
-                                        itemCount: 4,
-                                        scrollDirection: Axis.horizontal,
-                                        itemBuilder: (context, index) {
-                                          return Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 8.0),
-                                            child: HourButton(
-                                                onTap: () {
-                                                  mySelectedTime =
-                                                      mySelectedTime.replaceAll(
-                                                          '00',
-                                                          index * 15 == 0
-                                                              ? '00'
-                                                              : '${index * 15}');
-                                                  setState(() {});
-                                                  Navigator.pop(context);
-                                                },
-                                                hour: mySelectedTime.replaceAll(
-                                                    '00',
-                                                    index * 15 == 0
-                                                        ? '00'
-                                                        : '${index * 15}')),
-                                          );
-                                        }))
-                              ],
-                            ),
+                          StatefulBuilder(
+                            builder: (context, setState) {
+                              return SizedBox(
+                                height: Get.height * .3,
+                                child: Column(
+                                  children: [
+                                    SizedBox(
+                                      height: 42,
+                                      child: ListView.builder(
+                                          itemCount: 4,
+                                          scrollDirection: Axis.horizontal,
+                                          itemBuilder: (context, index) {
+                                            return Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 8.0),
+                                              child: HourButton(
+                                                  color: selectedButton.any(
+                                                          (element) =>
+                                                              element == index)
+                                                      ? Colors.blue
+                                                      : Colors.white,
+                                                  onTap: () {
+                                                    selectButton(index);
+                                                    mySelectedTime =
+                                                        mySelectedTime.replaceAll(
+                                                            '00',
+                                                            index * 15 == 0
+                                                                ? '00'
+                                                                : '${index * 15}');
+                                                    setState(() {});
+                                                    // Navigator.pop(context);
+                                                  },
+                                                  hour: mySelectedTime.replaceAll(
+                                                      '00',
+                                                      index * 15 == 0
+                                                          ? '00'
+                                                          : '${index * 15}')),
+                                            );
+                                          }),
+                                    ),
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: const Text('Choose Time'),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
                           ),
                           backgroundColor: Colors.white,
                         );
@@ -125,11 +156,13 @@ class _DateTimeScreenState extends State<DateTimeScreen> {
 class HourButton extends StatelessWidget {
   final Function() onTap;
   final String hour;
+  final Color color;
 
   const HourButton({
     Key? key,
     required this.onTap,
     required this.hour,
+    this.color = Colors.white,
   }) : super(key: key);
 
   @override
@@ -141,7 +174,7 @@ class HourButton extends StatelessWidget {
         height: 40,
         width: MediaQuery.of(context).size.width * .2,
         decoration: BoxDecoration(
-            color: Colors.white,
+            color: color,
             borderRadius: BorderRadius.circular(10),
             boxShadow: [
               BoxShadow(color: Colors.grey.shade300, blurRadius: 10),
