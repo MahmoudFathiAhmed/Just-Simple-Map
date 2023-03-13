@@ -5,7 +5,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:locations_work/core/routes/app_routes.dart';
 import 'package:locations_work/core/routes/routes_arguments.dart';
-import 'package:locations_work/helpers/location_helper.dart';
+import 'package:locations_work/core/helpers/location_helper.dart';
 
 class GoogleMapsScreen extends StatefulWidget {
   const GoogleMapsScreen({super.key});

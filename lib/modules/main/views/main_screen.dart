@@ -39,6 +39,12 @@ class _MainScreenState extends State<MainScreen> {
               },
               child: const Text('DateTime screen'),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, Routes.testScreenRoute);
+              },
+              child: const Text('Test screen'),
+            ),
           ],
         ),
       ),

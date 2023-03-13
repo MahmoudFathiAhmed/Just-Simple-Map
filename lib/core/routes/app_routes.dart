@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:locations_work/core/routes/routes_arguments.dart';
-import 'package:locations_work/presentation/date_time_screen.dart';
-import 'package:locations_work/presentation/google_map_screen.dart';
-import 'package:locations_work/presentation/just_lat_long_screen.dart';
-import 'package:locations_work/presentation/lat_long_from_map_screen.dart';
-import 'package:locations_work/presentation/main_screen.dart';
+import 'package:locations_work/modules/date_time/views/date_time_screen.dart';
+import 'package:locations_work/modules/date_time/google_map/views/google_map_screen.dart';
+import 'package:locations_work/modules/just_lat_long/views/just_lat_long_screen.dart';
+import 'package:locations_work/modules/lat_long_from_map_screen/views/lat_long_from_map_screen.dart';
+import 'package:locations_work/modules/main/views/main_screen.dart';
+import 'package:locations_work/modules/test_module/views/test_screen.dart';
 
 class Routes {
   static const String initialRoute = '/';
@@ -14,6 +15,7 @@ class Routes {
   static const String googleMapScreenRoute = '/googleMapScreenRoute';
   static const String latLongFromMapScreenRoute = '/latLongFromMapScreenRoute';
   static const String dateTimeScreenRoute = '/dateTimeScreenRoute';
+  static const String testScreenRoute = '/testScreenRoute';
 }
 
 class AppRoutes {
@@ -30,6 +32,11 @@ class AppRoutes {
       case Routes.googleMapScreenRoute:
         return MaterialPageRoute(
             builder: (context) => const GoogleMapsScreen());
+      //testScreen
+      case Routes.testScreenRoute:
+        return MaterialPageRoute(
+            builder: (context) => const TestScreen());
+      //date Time Screen
       case Routes.dateTimeScreenRoute:
         return MaterialPageRoute(
             builder: (context) => const DateTimeScreen());

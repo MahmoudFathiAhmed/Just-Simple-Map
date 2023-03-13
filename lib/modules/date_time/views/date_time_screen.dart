@@ -60,6 +60,8 @@ class _DateTimeScreenState extends State<DateTimeScreen> {
               initialSelectedDate: DateTime.now(),
               onDateChange: (selectedDate) {
                 mySelectedDate = DateFormat('yyyy-MM-dd').format(selectedDate);
+                print(selectedDate.add(Duration(hours: 5)));
+                print(selectedDate.toIso8601String());
               },
             ),
             const SizedBox(
