@@ -3,6 +3,7 @@ import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:locations_work/modules/date_time/widgets/date_time_line.dart';
 
 class DateTimeScreen extends StatefulWidget {
   const DateTimeScreen({super.key});
@@ -45,7 +46,6 @@ class _DateTimeScreenState extends State<DateTimeScreen> {
     '07:00 Pm',
     '08:00 Pm',
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,10 +60,10 @@ class _DateTimeScreenState extends State<DateTimeScreen> {
               initialSelectedDate: DateTime.now(),
               onDateChange: (selectedDate) {
                 mySelectedDate = DateFormat('yyyy-MM-dd').format(selectedDate);
-                print(selectedDate.add(Duration(hours: 5)));
                 print(selectedDate.toIso8601String());
               },
             ),
+            
             const SizedBox(
               height: 20,
             ),

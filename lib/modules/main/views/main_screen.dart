@@ -45,6 +45,18 @@ class _MainScreenState extends State<MainScreen> {
               },
               child: const Text('Test screen'),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, Routes.screen1Route);
+              },
+              child: const Text('To Screen 1'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, Routes.cameraScreenRoute);
+              },
+              child: const Text('To Camera Screen'),
+            ),
           ],
         ),
       ),

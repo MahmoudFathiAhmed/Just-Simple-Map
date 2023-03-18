@@ -9,6 +9,7 @@
  * min sdk 21
  * 
  */
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -17,8 +18,11 @@ import 'package:locations_work/core/helpers/service_locator.dart';
 import 'package:locations_work/core/routes/app_routes.dart';
 import 'package:locations_work/modules/date_time/cubit/cubit/date_time_cubit.dart';
 
-void main() {
-  //  WidgetsFlutterBinding.ensureInitialized();
+late List<CameraDescription> cameras;
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  cameras = await availableCameras();
+
   ServicesLocator().init();
   runApp(const MyApp());
 }
@@ -32,17 +36,18 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
-    @override
+  @override
   void initState() {
     super.initState();
     Bloc.observer = MyBlocObserver();
   }
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (BuildContext context) => DateTimeCubit(getIt.get()),
+          create: (BuildContext context) => DateTimeCubit(),
         ),
       ],
       child: GetMaterialApp(

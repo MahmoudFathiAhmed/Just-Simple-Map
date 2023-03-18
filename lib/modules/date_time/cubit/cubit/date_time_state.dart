@@ -27,5 +27,32 @@ class DateTimeError extends DateTimeState {
   List<Object> get props => [error];
 }
 class ChangeDayState extends DateTimeState{
-  
+
+}
+class ChangeDayLoadingState extends DateTimeState {
+  @override
+  List<Object> get props => [];
+}
+class ChangeMinutesLoadingState extends DateTimeState {
+  @override
+  List<Object> get props => [];
+}
+
+class ChangeMinutesState extends DateTimeState {
+  @override
+  List<Object> get props => [];
+}
+
+class SwitchState extends DateTimeState {
+  @override
+  List<Object> get props => [];
+}
+
+class ChangeMinutesButtonColorstate extends DateTimeState {
+  @override
+  List<Object> get props => [];
+}
+class ChangeSelectedButtonstate extends DateTimeState {
+  @override
+  List<Object> get props => [];
 }
