@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:locations_work/core/routes/routes_arguments.dart';
 import 'package:locations_work/modules/camera/views/camera_screen.dart';
 import 'package:locations_work/modules/camera/views/image_preview_screen.dart';
+import 'package:locations_work/modules/camera2/views/add_screen.dart';
+import 'package:locations_work/modules/camera2/views/camera2.dart';
 import 'package:locations_work/modules/date_time/views/date_time_screen.dart';
 import 'package:locations_work/modules/date_time/google_map/views/google_map_screen.dart';
 import 'package:locations_work/modules/just_lat_long/views/just_lat_long_screen.dart';
@@ -24,7 +26,8 @@ class Routes {
   static const String screen1Route = '/screen1Route';
   static const String screen2Route = '/screen2Route';
   static const String screen3Route = '/screen3Route';
-  static const String cameraScreenRoute = '/cameraScreenRoute';
+  static const String addScreenRoute = '/addScreenRoute';
+  static const String camera2ScreenRoute = '/camera2ScreenRoute';
   static const String imagePreviewScreenRoute = '/imagePreviewScreenRoute';
 }
 
@@ -48,8 +51,12 @@ class AppRoutes {
       //date Time Screen
       case Routes.dateTimeScreenRoute:
         return MaterialPageRoute(builder: (context) => const DateTimeScreen());
-      case Routes.cameraScreenRoute:
-        return MaterialPageRoute(builder: (context) => const CameraScreen());
+      // case Routes.cameraScreenRoute:
+      //   return MaterialPageRoute(builder: (context) => const CameraScreen());
+      case Routes.addScreenRoute:
+        return MaterialPageRoute(builder: (context) => const AddScreen());
+      case Routes.camera2ScreenRoute:
+        return MaterialPageRoute(builder: (context) => const Camera2Screen());
       case Routes.imagePreviewScreenRoute:
         ImagePreviewScreenArgs imagePreviewScreenArgs =
             routeSettings.arguments as ImagePreviewScreenArgs;

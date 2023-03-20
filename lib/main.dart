@@ -18,10 +18,10 @@ import 'package:locations_work/core/helpers/service_locator.dart';
 import 'package:locations_work/core/routes/app_routes.dart';
 import 'package:locations_work/modules/date_time/cubit/cubit/date_time_cubit.dart';
 
-late List<CameraDescription> cameras;
+// late List<CameraDescription> cameras;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  cameras = await availableCameras();
+  // cameras = await availableCameras();
 
   ServicesLocator().init();
   runApp(const MyApp());
