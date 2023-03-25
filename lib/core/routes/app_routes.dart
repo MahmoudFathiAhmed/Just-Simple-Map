@@ -9,6 +9,7 @@ import 'package:locations_work/modules/date_time/google_map/views/google_map_scr
 import 'package:locations_work/modules/just_lat_long/views/just_lat_long_screen.dart';
 import 'package:locations_work/modules/lat_long_from_map_screen/views/lat_long_from_map_screen.dart';
 import 'package:locations_work/modules/main/views/main_screen.dart';
+import 'package:locations_work/modules/notifications/views/notifications_screen.dart';
 import 'package:locations_work/modules/screen_navigate/views/screen1.dart';
 import 'package:locations_work/modules/screen_navigate/views/screen2.dart';
 import 'package:locations_work/modules/screen_navigate/views/screen3.dart';
@@ -29,6 +30,7 @@ class Routes {
   static const String addScreenRoute = '/addScreenRoute';
   static const String camera2ScreenRoute = '/camera2ScreenRoute';
   static const String imagePreviewScreenRoute = '/imagePreviewScreenRoute';
+  static const String notificationsScreenRoute = '/notificationsScreenRoute';
 }
 
 class AppRoutes {
@@ -57,6 +59,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (context) => const AddScreen());
       case Routes.camera2ScreenRoute:
         return MaterialPageRoute(builder: (context) => const Camera2Screen());
+      case Routes.notificationsScreenRoute:
+        return MaterialPageRoute(builder: (context) => const NotificationsScreen());
       case Routes.imagePreviewScreenRoute:
         ImagePreviewScreenArgs imagePreviewScreenArgs =
             routeSettings.arguments as ImagePreviewScreenArgs;

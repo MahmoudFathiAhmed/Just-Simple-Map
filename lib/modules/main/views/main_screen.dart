@@ -51,6 +51,12 @@ class _MainScreenState extends State<MainScreen> {
               },
               child: const Text('To Screen 1'),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, Routes.notificationsScreenRoute);
+              },
+              child: const Text('To Notifications Screen'),
+            ),
             // ElevatedButton(
             //   onPressed: () {
             //     Navigator.pushNamed(context, Routes.cameraScreenRoute);
