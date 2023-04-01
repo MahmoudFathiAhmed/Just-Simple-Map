@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:locations_work/core/routes/app_routes.dart';
 import 'package:locations_work/core/routes/routes_arguments.dart';
 import 'package:locations_work/modules/screen_navigate/models/my_model.dart';
-import 'package:locations_work/modules/screen_navigate/views/screen2.dart';
 
 class Screen1 extends StatefulWidget {
   const Screen1({super.key});
@@ -63,7 +62,7 @@ class _Screen1State extends State<Screen1> {
                                 alignment: Alignment.centerRight,
                                 child: Text(
                                   countryController.text,
-                                  style: TextStyle(fontSize: 18),
+                                  style: const TextStyle(fontSize: 18),
                                 )),
                         suffixIcon: countryFlag == null
                             ? const Align(
@@ -77,7 +76,7 @@ class _Screen1State extends State<Screen1> {
                                 alignment: Alignment.centerLeft,
                                 child: Text(
                                   countryFlag!,
-                                  style: TextStyle(fontSize: 18),
+                                  style: const TextStyle(fontSize: 18),
                                 ),
                               ),
                         // contentPadding: EdgeInsets.all(10)

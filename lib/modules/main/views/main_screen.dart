@@ -16,60 +16,80 @@ class _MainScreenState extends State<MainScreen> {
         title: const Text('Locations Work'),
         centerTitle: true,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, Routes.justlatLongScreenRoute);
-              },
-              child: const Text('just lat long screen'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, Routes.googleMapScreenRoute);
-              },
-              child: const Text('google maps screen'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, Routes.dateTimeScreenRoute);
-              },
-              child: const Text('DateTime screen'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, Routes.testScreenRoute);
-              },
-              child: const Text('Test screen'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, Routes.screen1Route);
-              },
-              child: const Text('To Screen 1'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, Routes.notificationsScreenRoute);
-              },
-              child: const Text('To Notifications Screen'),
-            ),
-            // ElevatedButton(
-            //   onPressed: () {
-            //     Navigator.pushNamed(context, Routes.cameraScreenRoute);
-            //   },
-            //   child: const Text('To Camera Screen'),
-            // ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, Routes.addScreenRoute);
-              },
-              child: const Text('To Camera Screen'),
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.justlatLongScreenRoute);
+                },
+                child: const Text('just lat long screen'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.googleMapScreenRoute);
+                },
+                child: const Text('google maps screen'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.dateTimeScreenRoute);
+                },
+                child: const Text('DateTime screen'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.testScreenRoute);
+                },
+                child: const Text('Test screen'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.screen1Route);
+                },
+                child: const Text('To Screen 1'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.notificationsScreenRoute);
+                },
+                child: const Text('To Notifications Screen'),
+              ),
+              // ElevatedButton(
+              //   onPressed: () {
+              //     Navigator.pushNamed(context, Routes.cameraScreenRoute);
+              //   },
+              //   child: const Text('To Camera Screen'),
+              // ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.addScreenRoute);
+                },
+                child: const Text('To Camera Screen'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.dictionaryScreenRoute);
+                },
+                child: const Text('To Dictionary Screen'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.randomColorScreenRoute);
+                },
+                child: const Text('Random Color Screen'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.firebaseNotificationsScreenRoute);
+                },
+                child: const Text('Firebase Notifications'),
+              ),
+            ],
+          ),
         ),
       ),
     );

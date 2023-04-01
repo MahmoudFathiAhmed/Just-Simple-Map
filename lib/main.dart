@@ -9,19 +9,61 @@
  * min sdk 21
  * 
  */
-import 'package:camera/camera.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:locations_work/core/helpers/app_prefs.dart';
 import 'package:locations_work/core/helpers/bloc_observer.dart';
+import 'package:locations_work/core/helpers/notifications_helper.dart';
 import 'package:locations_work/core/helpers/service_locator.dart';
 import 'package:locations_work/core/routes/app_routes.dart';
 import 'package:locations_work/modules/date_time/cubit/cubit/date_time_cubit.dart';
+import 'package:locations_work/modules/firebase_notifications/local_data_source/database_helper.dart';
+import 'package:locations_work/modules/firebase_notifications/views/firebase_notifications_screen.dart';
 
 // late List<CameraDescription> cameras;
+
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  // If you're going to use other Firebase services in the background, such as Firestore,
+  // make sure you call `initializeApp` before using other Firebase services.
+  debugPrint('${message.notification}');
+}
+
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
   // cameras = await availableCameras();
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp();
+  final fcmToken = await FirebaseMessaging.instance.getToken();
+
+  debugPrint('********$fcmToken***');
+  NotificationsHelper.initializeNotifications();
+
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) async{
+    final time = DateTime.now().millisecondsSinceEpoch;
+    final title = message.notification?.title ?? 'no title';
+    final body = message.notification?.body ?? 'no body';
+     await NotificationDatabase.instance.addNotification(title, body, time);
+    NotificationsHelper.showNotification(
+        title: title,
+        body: body,
+        payload: message.data['route']);
+  });
+  // when i clicked on the notification
+  FirebaseMessaging.onMessageOpenedApp.listen((message) async{
+     final time = DateTime.now().millisecondsSinceEpoch;
+    final title = message.notification?.title ?? 'no title';
+    final body = message.notification?.body ?? 'no body';
+     await NotificationDatabase.instance.addNotification(title, body, time);
+    debugPrint(message.notification?.body);
+    Get.to(
+      () => const FirebaseNotificationsScreen(),
+    );
+  });
+
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   ServicesLocator().init();
   runApp(const MyApp());

@@ -1,0 +1,68 @@
+{
+    "onboarding_title1":"خيارات غسيل أكثر لتلبية احتياجاتك",
+    "onboarding_title2":"مرونة المواعيد",
+    "onboarding_title3":"طرق دفع متعددة",
+    "onboarding_body1":"تصفح قائمة خدمات الغسيل المميزه المتوفره علي منصتنا واختر مايناسبك بكل يسر وسهوله",
+    "onboarding_body2":"كل ما عليك فعله هو تحديد حجم و مكان سيارتك ووقت الموعد وصابونة سيقوم بتقديم افضل تجربه غسيل علي الاطلاق",
+    "onboarding_body3":"يمكنك الطلب الآن والدفع لاحقا نقدا أو عن طريق الاونلاين ويمكنك ايضا تعبئة رصيد المحفظةلتتمتع بسهولة الدفع بدون استخدام البطاقة للطلبات اللاحقة",
+    
+    "welcome_back":"مرحبا بالعودة",
+    "send_verification_code":"سوف نرسل لك رسالة تاكيد على الهاتف",
+    
+    "mobile_number":"الهاتف المحمول",
+    "continue":"استمر",
+    
+    "verify_number": "تأكيد الرقم المحمول",
+    "sent_you_digit_code":"ارسلنا لك رمز مكون من ٦ ارقام لتاكيد رقم هاتفك",
+    "verify": "تأكيد",
+    
+    "enter_valid_phone_number": "من فضلك ادخل رقم هاتف صالج",
+    "enter_correct_phone_number": "من فضلك ادخل رقم هاتف صحيح",
+   
+   "set_your_location": "حدد موقعك",
+   "edit_profile":"تعديل الملف الشخصي",
+   "orders":"الطلبات",
+   "contact_us":"تواصل معنا",
+   "about":"عنا",
+   "privacy_policy":"سياسه الخصوصيه",
+   "log_out":"تسجيل الخروج",
+   
+   "current_order":"الطلب الحالي",
+   "customer_time":"وقت العميل",
+   "waiting_order":"الطلب المنتظر",
+   
+   "location_colon":"الموقع: ",
+   "location":"الموقع",
+   "time_and_date":"الوقت و التاريخ",
+   "type_of_service":"نوع الخدمة وحجم المركبة",
+   "extra_services": "خدمات الاضافية",
+   "total_payment":"المبلغ المستحق وطريقة الدفع",
+   "take_order":"اقبل الطلب",
+   
+   "the_order_has_been_added_successfully":"تم اضافة الطلب بنجاح",
+   
+   "my_orders":"طلباتي",
+   "active":"حالية",
+   "history":"سابقة",
+   "exterior_and_interior":"(داخلي و خارجي)",
+   "status":"الحاله",
+   "the_order_has_been_finished_successfully":"تم انجاز الطلب بنجاح",
+   "one_time": "مرة واحدة فقط",
+   
+   "take_a_picture_before_washing_the_car":"صورة المركبة قبل الغسيل",
+   "take_a_photo":"التقط صوره",
+   "take_a_picture":"التقط صوره",
+   "the_car_is_been_washing":"يتم غسل المركبة",
+   "end_washing":"انتهاء الغسيل",
+   "view_detials":"اظهار التفاصيل",
+   "take_a_picture_after_washing_the_car":"صورة المركبة بعد الغسيل",
+   "submit":"ادخال",
+   
+   "my_profile":"ملفي",
+   "my_balance":"حسابي المالي",
+   "completed_services":"الطلبات الكاملة",
+   "tools_remaining":"الادوات المتبقية",
+   "activate_time":"تنشيط الحساب",
+   "take_a_rest":"خذ استراحة",
+   "activate":"قم بالتفعيل"
+   }

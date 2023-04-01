@@ -7,9 +7,9 @@ class LatLonFromMapScreenArgs {
 
   LatLonFromMapScreenArgs(this.lat, this.long);
 }
+
 class ImagePreviewScreenArgs {
   final XFile file;
-
 
   ImagePreviewScreenArgs(this.file);
 }
@@ -19,3 +19,9 @@ class MyArgument {
 
   MyArgument({this.myModel});
 }
+
+// class FirebaseNotificationsScreenArgs {
+//   final String body;
+
+//   FirebaseNotificationsScreenArgs({required this.body});
+// }

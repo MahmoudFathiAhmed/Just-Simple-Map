@@ -1,0 +1,60 @@
+{
+ "welcome_back":"Welcome Back!",
+ "send_verification_code":"We will send a verification Code on\n \t \t \t \t \t \t Your Phone number",
+ 
+ "mobile_number":"Mobile Number",
+ "continue":"Continue",
+ 
+ "verify_number": "Verify your number",
+ "sent_you_digit_code":"We sent you a 6-digit code to verify your number",
+ "verify": "VERIFY",
+ 
+ "enter_valid_phone_number": "Please enter valid number",
+ "enter_correct_phone_number": "Please enter correct number",
+
+"set_your_location": "Set Your Location",
+"edit_profile":"Edit Profile",
+"orders":"Orders",
+"contact_us":"Contact us",
+"about":"About us",
+"privacy_policy":"Privacy policy",
+"log_out":"Log out",
+
+"current_order":"Current Order",
+"customer_time":"Customer Time",
+"waiting_order":"Waiting Order",
+
+"location_colon":"Location:",
+"location":"Location",
+"time_and_date":"Time & Date",
+"type_of_service":"Type of service",
+"total_payment":"Total Payment: ",
+"take_order":"Take Order",
+
+"the_order_has_been_added_successfully":"The order Has been Added successfully",
+"one_time":"One Time",
+
+"my_orders":"My Orders",
+"active":"Active",
+"history":"History",
+"exterior_and_interior":"(Exterior and interior )",
+"status":"Status",
+"the_order_has_been_finished_successfully":"The order Has been Finished successfully",
+
+"take_a_picture_before_washing_the_car":"Take a picture before washing the car",
+"take_a_photo":"take a Photo",
+"take_a_picture":"take a Picture",
+"the_car_is_been_washing":"The car is been washing",
+"end_washing":"End washing",
+"view_detials":"View details",
+"take_a_picture_after_washing_the_car":"Take a picture after washing the car",
+"submit":"Submit",
+
+"my_profile":"My Profile",
+"my_balance":"My Balance",
+"completed_services":"Completed Services",
+"tools_remaining":"Tools Remaining",
+"activate_time":"Activate time",
+"take_a_rest":"take a rest",
+"activate":"Activate"
+}

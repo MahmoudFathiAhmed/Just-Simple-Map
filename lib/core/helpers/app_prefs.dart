@@ -2,6 +2,7 @@ import 'package:locations_work/core/app/resources/languages.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const String prefsKeyLang = 'prefsKeyLang';
+const String prefsKeyNotifications = 'prefsKeyNotifications';
 
 class AppPreferences {
   final SharedPreferences _sharedPreferences;
@@ -26,4 +27,5 @@ class AppPreferences {
           prefsKeyLang, LanguageType.arabic.getValue());
     }
   }
+
 }

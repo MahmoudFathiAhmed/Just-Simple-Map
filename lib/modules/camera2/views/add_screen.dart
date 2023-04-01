@@ -39,13 +39,13 @@ class _AddScreenState extends State<AddScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text("Add photo"),),
+          title: const Text("Add photo"),),
           body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 "Name",
                 style: TextStyle(fontSize: 20),
               ),
@@ -55,19 +55,19 @@ class _AddScreenState extends State<AddScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     "Photo",
                     style: TextStyle(fontSize: 20),
                   ),
                   IconButton(
-                    icon: Icon(Icons.add),
+                    icon: const Icon(Icons.add),
                     onPressed: () => openCamera(),
                   )
                 ],
               ),
               Expanded(
                 child: path != null
-                    ? Container(
+                    ?  SizedBox(
                         width: double.infinity,
                         child: Image.file(File(path!), fit: BoxFit.cover))
                     : Container(),

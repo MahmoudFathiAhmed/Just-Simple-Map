@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:locations_work/core/routes/functions.dart';
 import 'package:locations_work/modules/date_time/models/available_response.dart';
 
-import 'package:locations_work/modules/date_time/repository/date_time_repository.dart';
 
 part 'date_time_state.dart';
 
@@ -90,8 +89,7 @@ class DateTimeCubit extends Cubit<DateTimeState> {
   }
 
  void Function(DateTime)?onChanged(DateTime selecteDate){
-   
+   return null;
  
-
  }
 }

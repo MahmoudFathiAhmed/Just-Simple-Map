@@ -36,22 +36,24 @@ class _Camera2ScreenState extends State<Camera2Screen>
     // App state changed before we got the chance to initialize.
     if (!bloc.isInitialized()) return;
 
-    if (state == AppLifecycleState.inactive)
+    if (state == AppLifecycleState.inactive) {
       bloc.add(CameraStopped());
-    else if (state == AppLifecycleState.resumed) bloc.add(CameraInitialized());
+    } else if (state == AppLifecycleState.resumed) {
+      bloc.add(CameraInitialized());
+    }
   }
 
   @override
   Widget build(BuildContext context)=>BlocConsumer<CameraBloc, CameraState>(
       listener: (_, state) {
-        if (state is CameraCaptureSuccess)
+        if (state is CameraCaptureSuccess) {
           Navigator.of(context).pop(state.path);
-        else if (state is CameraCaptureFailure)
-        
+        } else if (state is CameraCaptureFailure) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             key: MyPhotosKeys.errorSnackBar,
             content: Text(state.error),
           ));
+        }
       },
       builder: (context, state)=> Scaffold(
           key: globalKey,
