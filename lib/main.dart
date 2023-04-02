@@ -28,6 +28,14 @@ import 'package:locations_work/modules/firebase_notifications/views/firebase_not
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // If you're going to use other Firebase services in the background, such as Firestore,
   // make sure you call `initializeApp` before using other Firebase services.
+  final time = DateTime.now().millisecondsSinceEpoch;
+    final title = message.notification?.title ?? 'no title';
+    final body = message.notification?.body ?? 'no body';
+     await NotificationDatabase.instance.addNotification(title, body, time);
+    debugPrint(message.notification?.body);
+    Get.to(
+      () => const FirebaseNotificationsScreen(),
+    );
   debugPrint('${message.notification}');
 }
 
@@ -46,14 +54,13 @@ Future<void> main() async {
     final title = message.notification?.title ?? 'no title';
     final body = message.notification?.body ?? 'no body';
      await NotificationDatabase.instance.addNotification(title, body, time);
-    NotificationsHelper.showNotification(
+    await NotificationsHelper.showNotification(
         title: title,
-        body: body,
-        payload: message.data['route']);
+        body: body,);
   });
   // when i clicked on the notification
   FirebaseMessaging.onMessageOpenedApp.listen((message) async{
-     final time = DateTime.now().millisecondsSinceEpoch;
+    final time = DateTime.now().millisecondsSinceEpoch;
     final title = message.notification?.title ?? 'no title';
     final body = message.notification?.body ?? 'no body';
      await NotificationDatabase.instance.addNotification(title, body, time);
@@ -64,7 +71,6 @@ Future<void> main() async {
   });
 
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-
   ServicesLocator().init();
   runApp(const MyApp());
 }

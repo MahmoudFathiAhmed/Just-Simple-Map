@@ -1,6 +1,6 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-a
+
 class NotificationDatabase {
   static final NotificationDatabase instance = NotificationDatabase._init();
 
