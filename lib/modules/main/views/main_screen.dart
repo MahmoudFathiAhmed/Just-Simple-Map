@@ -88,6 +88,18 @@ class _MainScreenState extends State<MainScreen> {
                 },
                 child: const Text('Firebase Notifications'),
               ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.selectDateUpdateOrderScreenRoute);
+                },
+                child: const Text('Select Date Update Order Screen'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.countryCodeScreenRoute);
+                },
+                child: const Text('Country Code Screen'),
+              ),
             ],
           ),
         ),

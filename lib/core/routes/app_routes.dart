@@ -3,6 +3,7 @@ import 'package:locations_work/core/routes/routes_arguments.dart';
 import 'package:locations_work/modules/camera/views/image_preview_screen.dart';
 import 'package:locations_work/modules/camera2/views/add_screen.dart';
 import 'package:locations_work/modules/camera2/views/camera2.dart';
+import 'package:locations_work/modules/country_code/views/country_code_screen.dart';
 import 'package:locations_work/modules/date_time/views/date_time_screen.dart';
 import 'package:locations_work/modules/date_time/google_map/views/google_map_screen.dart';
 import 'package:locations_work/modules/dictionary/views/dictionary_screen.dart';
@@ -16,6 +17,7 @@ import 'package:locations_work/modules/screen_navigate/views/screen1.dart';
 import 'package:locations_work/modules/screen_navigate/views/screen2.dart';
 import 'package:locations_work/modules/screen_navigate/views/screen3.dart';
 import 'package:locations_work/modules/test_module/views/test_screen.dart';
+import 'package:locations_work/modules/update_order/views/select_date_update_order_screen.dart';
 
 class Routes {
   static const String initialRoute = '/';
@@ -36,6 +38,8 @@ class Routes {
   static const String dictionaryScreenRoute = '/dictionaryScreenRoute';
   static const String randomColorScreenRoute = '/randomColorScreenRoute';
   static const String firebaseNotificationsScreenRoute = '/firebaseNotificationsScreenRoute';
+  static const String selectDateUpdateOrderScreenRoute = '/selectDateUpdateOrderScreenRoute';
+  static const String countryCodeScreenRoute = '/countryCodeScreenRoute';
 }
 
 class AppRoutes {
@@ -100,6 +104,10 @@ class AppRoutes {
         // FirebaseNotificationsScreenArgs firebaseNotificationsScreenArgs = routeSettings.arguments as FirebaseNotificationsScreenArgs;
         return MaterialPageRoute(
             builder: (context) => const FirebaseNotificationsScreen());
+      case Routes.selectDateUpdateOrderScreenRoute:
+        return MaterialPageRoute(builder: (context) => const SelectDateUpdateOrderScreen());
+      case Routes.countryCodeScreenRoute:
+        return MaterialPageRoute(builder: (context) => const CountryCodeScreen());
       default:
         return undefinedRoute();
     }

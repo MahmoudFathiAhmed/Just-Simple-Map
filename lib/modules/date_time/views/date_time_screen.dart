@@ -155,7 +155,7 @@ class _DateTimeScreenState extends State<DateTimeScreen> {
 }
 
 class HourButton extends StatelessWidget {
-  final Function() onTap;
+  final Function()? onTap;
   final String hour;
   final Color color;
 

@@ -4,7 +4,7 @@ class MinutesButton extends StatelessWidget {
   final String hour;
   final Color buttonColor;
   final Color availabilityColor;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   const MinutesButton({
     super.key,

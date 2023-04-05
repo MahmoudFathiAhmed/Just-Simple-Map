@@ -26,12 +26,12 @@ class NotificationsHelper {
       var payload}) async {
     const AndroidNotificationDetails androidPlatformChannelSpecifics =
         AndroidNotificationDetails(
-      'Channel id',
-      'Channel Name',
-      channelDescription: 'Channel Description',
+      'default_channel_id',
+      'Default Channel',
+      channelDescription: 'This is the default notification channel',
       importance: Importance.max,
       priority: Priority.high,
-      color: Colors.blue,
+      color: Color(0xFF041EA3),
       showWhen: true,
     );
 
