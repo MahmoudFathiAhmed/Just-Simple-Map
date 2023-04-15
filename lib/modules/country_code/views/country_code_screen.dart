@@ -1,3 +1,5 @@
+import 'package:country_picker/country_picker.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:locations_work/core/routes/app_routes.dart';
 import 'package:locations_work/main.dart';
@@ -12,6 +14,8 @@ class CountryCodeScreen extends StatefulWidget {
 }
 
 class _CountryCodeScreenState extends State<CountryCodeScreen> {
+  String formattedNumber = '';
+  @override
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,6 +82,24 @@ class _CountryCodeScreenState extends State<CountryCodeScreen> {
                 ],
               ),
             ),
+            MaterialButton(
+              onPressed: () {
+                const number = 1234.56;
+                final formatter = NumberFormat('#,##0.00', 'ar');
+                setState(() {
+                  formattedNumber = formatter.format(number);
+                });
+                showCountryPicker(
+                  context: context,
+                  onSelect: (country) {},
+                  favorite: ['JO', 'SA', 'EG', 'PS'],
+                  exclude: ['IL'],
+                  // countryFilter: ['PS', 'JO', 'SA', 'EG'],
+                );
+              },
+              child: const Text('anything'),
+            ),
+            Text(formattedNumber)
           ]),
         ),
       ),
@@ -86,8 +108,8 @@ class _CountryCodeScreenState extends State<CountryCodeScreen> {
 
   Future<void> _openJustLatLong(BuildContext context) async {
     debugPrint('justLatLong');
-    await Navigator.push(
-        context, MaterialPageRoute(builder: (context) => JustLatLongScreen()));
+    await Navigator.push(context,
+        MaterialPageRoute(builder: (context) => const JustLatLongScreen()));
     // await Navigator.pushNamed(context, Routes.justlatLongScreenRoute);
     debugPrint('justLatLong completed');
   }
@@ -129,6 +151,7 @@ class SquareIconTextButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
+      // onTap: onTap,
       borderRadius: BorderRadius.circular(radius),
       child: Container(
         padding: EdgeInsets.all(padding),

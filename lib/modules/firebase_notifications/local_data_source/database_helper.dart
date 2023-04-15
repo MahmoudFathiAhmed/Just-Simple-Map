@@ -45,7 +45,7 @@ class NotificationDatabase {
 
   Future<List<Map<String, dynamic>>> getNotifications() async {
     final db = await instance.database;
-    final orderBy = 'time DESC';
+    const orderBy = 'time DESC';
 
     return await db.query('notifications', orderBy: orderBy);
   }

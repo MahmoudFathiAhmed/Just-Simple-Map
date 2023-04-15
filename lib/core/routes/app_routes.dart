@@ -3,6 +3,7 @@ import 'package:locations_work/core/routes/routes_arguments.dart';
 import 'package:locations_work/modules/camera/views/image_preview_screen.dart';
 import 'package:locations_work/modules/camera2/views/add_screen.dart';
 import 'package:locations_work/modules/camera2/views/camera2.dart';
+import 'package:locations_work/modules/contact_us/views/contact_us_screen.dart';
 import 'package:locations_work/modules/country_code/views/country_code_screen.dart';
 import 'package:locations_work/modules/date_time/views/date_time_screen.dart';
 import 'package:locations_work/modules/date_time/google_map/views/google_map_screen.dart';
@@ -12,10 +13,13 @@ import 'package:locations_work/modules/just_lat_long/views/just_lat_long_screen.
 import 'package:locations_work/modules/lat_long_from_map_screen/views/lat_long_from_map_screen.dart';
 import 'package:locations_work/modules/main/views/main_screen.dart';
 import 'package:locations_work/modules/notifications/views/notifications_screen.dart';
+import 'package:locations_work/modules/radio/views/radio_screen.dart';
+import 'package:locations_work/modules/radio_list_tile/views/radio_listtile_screen.dart';
 import 'package:locations_work/modules/random_colors/views/random_colors_screen.dart';
 import 'package:locations_work/modules/screen_navigate/views/screen1.dart';
 import 'package:locations_work/modules/screen_navigate/views/screen2.dart';
 import 'package:locations_work/modules/screen_navigate/views/screen3.dart';
+import 'package:locations_work/modules/test1/views/test1.dart';
 import 'package:locations_work/modules/test_module/views/test_screen.dart';
 import 'package:locations_work/modules/update_order/views/select_date_update_order_screen.dart';
 
@@ -40,6 +44,10 @@ class Routes {
   static const String firebaseNotificationsScreenRoute = '/firebaseNotificationsScreenRoute';
   static const String selectDateUpdateOrderScreenRoute = '/selectDateUpdateOrderScreenRoute';
   static const String countryCodeScreenRoute = '/countryCodeScreenRoute';
+  static const String test1ScreenRoute = '/test1ScreenRoute';
+  static const String radioScreenRoute = '/radioScreenRoute';
+  static const String radioListtileScreenRoute = '/radioListtileScreenRoute';
+  static const String contactUsScreenRoute = '/contactUsScreenRoute';
 }
 
 class AppRoutes {
@@ -108,6 +116,14 @@ class AppRoutes {
         return MaterialPageRoute(builder: (context) => const SelectDateUpdateOrderScreen());
       case Routes.countryCodeScreenRoute:
         return MaterialPageRoute(builder: (context) => const CountryCodeScreen());
+      case Routes.test1ScreenRoute:
+        return MaterialPageRoute(builder: (context) => const Test1Screen());
+      // case Routes.radioScreenRoute:
+      //   return MaterialPageRoute(builder: (context) => const RadioScreen());
+      case Routes.radioListtileScreenRoute:
+        return MaterialPageRoute(builder: (context) => const RadioListtileScreen());
+      case Routes.contactUsScreenRoute:
+        return MaterialPageRoute(builder: (context) => const ContactUsScreen());
       default:
         return undefinedRoute();
     }

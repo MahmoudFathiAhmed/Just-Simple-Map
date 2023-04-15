@@ -111,7 +111,9 @@ class _DateTimeScreenState extends State<DateTimeScreen> {
                                                             index * 15 == 0
                                                                 ? '00'
                                                                 : '${index * 15}');
-                                                    setState(() {});
+                                                    setState(() {
+                                                      
+                                                    });
                                                     // Navigator.pop(context);
                                                   },
                                                   hour: mySelectedTime.replaceAll(

@@ -20,16 +20,29 @@ class _SelectDateUpdateOrderScreenState
   late DateTime initialDate;
   List<DateTime> allHours = [];
   List<DateTime> allMinutes = [];
+  String mySelectedDate = '';
+  String mySelectedLocalDate = '';
+  String mySelectedUtcDate = '';
 
   @override
   void initState() {
     super.initState();
     now = utcDateTime(DateTime.now());
+    // print(DateTime.now()
+    //     .subtract(const Duration(days: 1))
+    //     .toLocal()
+    //     .difference(now)
+    //     .inDays);
     lastMidnight = utcDateTime(DateTime(now.year, now.month, now.day));
+    // print(utcDateTime(DateTime.now().toLocal()));
+    // print(DateTime.now().toLocal());
+    // print(now.toLocal());
+    // print(lastMidnight.toLocal());
     initialDate = lastMidnight.add(const Duration(hours: 9));
     List<DateTime> dates = [];
     for (int i = 0; i <= 13; i++) {
       dates.add(utcDateTime(initialDate.add(Duration(hours: i))));
+      // print(utcDateTime(dates[i].toLocal()));
     }
     allHours = dates;
   }
@@ -68,89 +81,93 @@ class _SelectDateUpdateOrderScreenState
               ),
               const SizedBox(height: 12),
               SizedBox(
-                  height: 220,
-                  child: GridView.builder(
-                    itemCount: allHours.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 4,
-                            crossAxisSpacing: 10,
-                            mainAxisSpacing: 10,
-                            childAspectRatio: 2),
-                    itemBuilder: (context, index) {
-                      return HourButton(
-                        hour: getHourFromDate(
-                          allHours[index],
-                        ),
-                        onTap:
-                            now
-                                        .subtract(const Duration(minutes: 30))
-                                        .compareTo(allHours[index]) ==
-                                    1
-                                ? null
-                                : () {
-                                    allMinutes =
-                                        buildMinutesList(allHours[index]);
-                                    Get.bottomSheet(
-                                      BottomSheet(
-                                        onClosing: () {},
-                                        enableDrag: false,
-                                        backgroundColor: Colors.white,
-                                        builder: (context) {
-                                          return Container(
-                                            color: Colors.grey.withOpacity(.1),
-                                            height: 240,
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(20.0),
-                                              child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.center,
-                                                  children: [
-                                                    const SizedBox(height: 10),
-                                                    SizedBox(
-                                                      height: 40,
-                                                      child: ListView.builder(
-                                                        itemCount:
-                                                            allMinutes.length,
-                                                        scrollDirection:
-                                                            Axis.horizontal,
-                                                        itemBuilder:
-                                                            (context, index) {
-                                                          return MinutesButton(
-                                                            buttonColor:
-                                                                Colors.white,
-                                                            availabilityColor:
-                                                                Colors.blue,
-                                                            hour: getHourFromDate(
-                                                                utcDateTime(
-                                                                    allMinutes[
-                                                                        index])),
-                                                            onTap: (now.compareTo(allMinutes[
-                                                                            index]) ==
-                                                                        1 ||
-                                                                    now.add(const Duration(minutes: 15)).compareTo(
-                                                                            allMinutes[index]) ==
-                                                                        1)
-                                                                ? null
-                                                                : () {
-                                                                    Navigator.pop(
-                                                                        context);
-                                                                  },
-                                                          );
-                                                        },
-                                                      ),
+                height: 220,
+                child: GridView.builder(
+                  itemCount: allHours.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      childAspectRatio: 2),
+                  itemBuilder: (context, index) {
+                    return HourButton(
+                      hour: getHourFromDate(
+                        allHours[index],
+                      ),
+                      onTap:
+                          now
+                                      .subtract(const Duration(minutes: 30))
+                                      .compareTo(allHours[index]) ==
+                                  1
+                              ? null
+                              : () {
+                                  allMinutes =
+                                      buildMinutesList(allHours[index]);
+                                  Get.bottomSheet(
+                                    BottomSheet(
+                                      onClosing: () {},
+                                      enableDrag: false,
+                                      backgroundColor: Colors.white,
+                                      builder: (context) {
+                                        return Container(
+                                          color: Colors.grey.withOpacity(.1),
+                                          height: 240,
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(20.0),
+                                            child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  const SizedBox(height: 10),
+                                                  SizedBox(
+                                                    height: 40,
+                                                    child: ListView.builder(
+                                                      itemCount:
+                                                          allMinutes.length,
+                                                      scrollDirection:
+                                                          Axis.horizontal,
+                                                      itemBuilder:
+                                                          (context, index) {
+                                                        return MinutesButton(
+                                                          buttonColor:
+                                                              Colors.white,
+                                                          availabilityColor:
+                                                              Colors.blue,
+                                                          hour: getHourFromDate(
+                                                              utcDateTime(
+                                                                  allMinutes[
+                                                                      index])),
+                                                          onTap: (now.compareTo(
+                                                                          allMinutes[
+                                                                              index]) ==
+                                                                      1 ||
+                                                                  now.add(const Duration(minutes: 15)).compareTo(
+                                                                          allMinutes[
+                                                                              index]) ==
+                                                                      1)
+                                                              ? null
+                                                              : () {
+                                                                  Navigator.pop(
+                                                                      context);
+                                                                },
+                                                        );
+                                                      },
                                                     ),
-                                                  ]),
-                                            ),
-                                          );
-                                        },
-                                      ),
-                                    );
-                                  },
-                      );
-                    },
-                  ))
+                                                  ),
+                                                ]),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  );
+                                },
+                    );
+                  },
+                ),
+              ),
+              Text(mySelectedDate),
+              Text(mySelectedLocalDate),
+              Text(mySelectedLocalDate),
             ],
           ),
         ),

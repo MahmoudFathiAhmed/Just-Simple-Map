@@ -30,7 +30,6 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   final title = message.notification?.title ?? 'no title';
   final body = message.notification?.body ?? 'no body';
   await NotificationDatabase.instance.addNotification(title, body, time);
-  print(body);
   Get.to(
     () => const FirebaseNotificationsScreen(),
   );
@@ -62,7 +61,6 @@ Future<void> main() async {
     final time = DateTime.now().millisecondsSinceEpoch;
     final title = message.notification?.title ?? 'no title';
     final body = message.notification?.body ?? 'no body';
-    print(message.data);
     await NotificationDatabase.instance.addNotification(title, body, time);
     debugPrint(message.notification?.body);
     Get.to(
