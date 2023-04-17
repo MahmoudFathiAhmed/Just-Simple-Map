@@ -3,17 +3,17 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:locations_work/core/routes/functions.dart';
+import 'package:locations_work/modules/date_time/models/available_and_not_available_response.dart';
 import 'package:locations_work/modules/date_time/models/available_response.dart';
-
+import 'package:locations_work/modules/date_time/repository/date_time_repository.dart';
 
 part 'date_time_state.dart';
 
 class DateTimeCubit extends Cubit<DateTimeState> {
-  // DateTimeRepository dateTimeRepository;
+  DateTimeRepository dateTimeRepository;
   DateTimeCubit(
-      // this.dateTimeRepository,
-      )
-      : super(DateTimeInitial());
+    this.dateTimeRepository,
+  ) : super(DateTimeInitial());
   static DateTimeCubit get(context) => BlocProvider.of(context);
 
   // void getAllSubscriptions() {
@@ -25,6 +25,18 @@ class DateTimeCubit extends Cubit<DateTimeState> {
   //     });
   //   });
   // }
+
+  void getAvailabilityStatus() {
+    emit(AvailablilityStatusLoading());
+    dateTimeRepository.getAvailabilityStatus().then((result) {
+      result.fold((failure) {
+        emit(AvailablilityStatusError(failure.message));
+      }, (response) {
+        emit(AvailablilityStatusSuccess(response));
+      });
+    });
+  }
+
   DateTime twoDaysBefore =
       utcDateTime(DateTime.now().subtract(const Duration(days: 2)));
   DateTime selected = utcDateTime(DateTime.now());
@@ -88,8 +100,7 @@ class DateTimeCubit extends Cubit<DateTimeState> {
     emit(ChangeSelectedButtonstate());
   }
 
- void Function(DateTime)?onChanged(DateTime selecteDate){
-   return null;
- 
- }
+  void Function(DateTime)? onChanged(DateTime selecteDate) {
+    return null;
+  }
 }

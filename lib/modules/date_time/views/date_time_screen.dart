@@ -1,8 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:locations_work/core/helpers/service_locator.dart';
+import 'package:locations_work/core/routes/functions.dart';
+import 'package:locations_work/modules/date_time/cubit/cubit/date_time_cubit.dart';
 
 class DateTimeScreen extends StatefulWidget {
   const DateTimeScreen({super.key});
@@ -16,6 +20,9 @@ class _DateTimeScreenState extends State<DateTimeScreen> {
   String mySelectedDate = '';
   String mySelectedTime = '';
   List<int> selectedButton = [];
+  List<String> allHoursList = [];
+  List<DateTime> dayHourList = [];
+  List<DateTime> dayHoursList = [];
   bool isButtonSelected = false;
   void selectButton(int id) {
     if (selectedButton.contains(id)) {
@@ -27,129 +34,157 @@ class _DateTimeScreenState extends State<DateTimeScreen> {
     }
   }
 
-  List<String> time = [
-    '05:00 Am',
-    '06:00 Am',
-    '07:00 Am',
-    '08:00 Am',
-    '09:00 Am',
-    '10:00 Am',
-    '11:00 Am',
-    '12:00 Pm',
-    '01:00 Pm',
-    '02:00 Pm',
-    '03:00 Pm',
-    '04:00 Pm',
-    '05:00 Pm',
-    '06:00 Pm',
-    '07:00 Pm',
-    '08:00 Pm',
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          children: [
-            DatePicker(
-              DateTime.now(),
-              controller: controller,
-              initialSelectedDate: DateTime.now(),
-              onDateChange: (selectedDate) {
-                mySelectedDate = DateFormat('yyyy-MM-dd').format(selectedDate);
-                debugPrint(selectedDate.toIso8601String());
-              },
-            ),
-            
-            const SizedBox(
-              height: 20,
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * .25,
-              child: GridView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: time.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                      childAspectRatio: 2),
-                  itemBuilder: (context, index) {
-                    return HourButton(
-                      onTap: () {
-                        mySelectedTime = time[index];
-                        Get.bottomSheet(
-                          StatefulBuilder(
-                            builder: (context, setState) {
-                              return SizedBox(
-                                height: Get.height * .3,
-                                child: Column(
-                                  children: [
-                                    SizedBox(
-                                      height: 42,
-                                      child: ListView.builder(
-                                          itemCount: 4,
-                                          scrollDirection: Axis.horizontal,
-                                          itemBuilder: (context, index) {
-                                            return Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 8.0),
-                                              child: HourButton(
-                                                  color: selectedButton.any(
-                                                          (element) =>
-                                                              element == index)
-                                                      ? Colors.blue
-                                                      : Colors.white,
-                                                  onTap: () {
-                                                    selectButton(index);
-                                                    mySelectedTime =
-                                                        mySelectedTime.replaceAll(
-                                                            '00',
-                                                            index * 15 == 0
-                                                                ? '00'
-                                                                : '${index * 15}');
-                                                    setState(() {
-                                                      
-                                                    });
-                                                    // Navigator.pop(context);
-                                                  },
-                                                  hour: mySelectedTime.replaceAll(
-                                                      '00',
-                                                      index * 15 == 0
-                                                          ? '00'
-                                                          : '${index * 15}')),
-                                            );
-                                          }),
-                                    ),
-                                    ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: const Text('Choose Time'),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
-                          ),
-                          backgroundColor: Colors.white,
-                        );
-                        // setState(() {
-                        //   mySelectedTime = time[index];
-                        // });
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+              create: (BuildContext context) =>
+                  DateTimeCubit(getIt.get())..getAvailabilityStatus())
+        ],
+        child: BlocBuilder<DateTimeCubit, DateTimeState>(
+          builder: (context, dateTimeState) {
+            if (dateTimeState is AvailablilityStatusLoading) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (dateTimeState is AvailablilityStatusSuccess) {
+              for (var item
+                  in dateTimeState.availableAndNotAvailableResponse.result!) {
+                String day = item.day!.addLeadingZero();
+                String hour = item.hour!.addLeadingZero();
+                String dayHour =
+                    '${DateTime.now().year}-${DateTime.now().month.addLeadingZero()}-${day} $hour:00:00.000Z';
+                DateTime dayHourDateTime = DateTime.parse(dayHour).toLocal();
+                dayHourList.add(dayHourDateTime);
+                allHoursList.add(hour);
+              }
+              debugPrint('$dayHourList');
+              debugPrint('$allHoursList');
+
+              return Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(
+                  children: [
+                    DatePicker(
+                      DateTime.now().toLocal(),
+                      controller: controller,
+                      initialSelectedDate: DateTime.now(),
+                      onDateChange: (selectedDate) {
+                        print(
+                            'selected Date: ${selectedDate.day},day Hour List First: ${dayHourList.first.day}');
+                        print(
+                            dayHourList.extractDatesWithDay(selectedDate.day));
+                        dayHoursList =
+                            dayHourList.extractDatesWithDay(selectedDate.day);
+                        mySelectedDate =
+                            DateFormat('yyyy-MM-dd').format(selectedDate);
+                        debugPrint(selectedDate.toIso8601String());
+                        setState(() {});
                       },
-                      hour: time[index],
-                    );
-                  }),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Text('$mySelectedDate, $mySelectedTime'),
-          ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * .25,
+                      child: GridView.builder(
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: dayHoursList.length,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 4,
+                                  crossAxisSpacing: 10,
+                                  mainAxisSpacing: 10,
+                                  childAspectRatio: 2),
+                          itemBuilder: (context, index) {
+                            return HourButton(
+                              onTap: () {
+                                mySelectedTime = dayHoursList[index].toString();
+                                Get.bottomSheet(
+                                  StatefulBuilder(
+                                    builder: (context, setState) {
+                                      return SizedBox(
+                                        height: Get.height * .3,
+                                        child: Column(
+                                          children: [
+                                            SizedBox(
+                                              height: 42,
+                                              child: ListView.builder(
+                                                  itemCount: 4,
+                                                  scrollDirection:
+                                                      Axis.horizontal,
+                                                  itemBuilder:
+                                                      (context, index) {
+                                                    return Padding(
+                                                      padding: const EdgeInsets
+                                                              .symmetric(
+                                                          horizontal: 8.0),
+                                                      child: HourButton(
+                                                          color: selectedButton
+                                                                  .any((element) =>
+                                                                      element ==
+                                                                      index)
+                                                              ? Colors.blue
+                                                              : Colors.white,
+                                                          onTap: () {
+                                                            selectButton(index);
+                                                            mySelectedTime =
+                                                                mySelectedTime.replaceAll(
+                                                                    '00',
+                                                                    index * 15 ==
+                                                                            0
+                                                                        ? '00'
+                                                                        : '${index * 15}');
+                                                            setState(() {});
+                                                            // Navigator.pop(context);
+                                                          },
+                                                          hour: mySelectedTime
+                                                              .replaceAll(
+                                                                  '00',
+                                                                  index * 15 ==
+                                                                          0
+                                                                      ? '00'
+                                                                      : '${index * 15}')),
+                                                    );
+                                                  }),
+                                            ),
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: const Text('Choose Time'),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                  backgroundColor: Colors.white,
+                                );
+                                // setState(() {
+                                //   mySelectedTime = time[index];
+                                // });
+                              },
+                              hour: dayHoursList[index]
+                                  .toString()
+                                  .substring(11, 16),
+                            );
+                          }),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Text('$mySelectedDate, $mySelectedTime'),
+                  ],
+                ),
+              );
+            } else {
+              return const Center(
+                child: Text('error'),
+              );
+            }
+          },
         ),
       ),
     );

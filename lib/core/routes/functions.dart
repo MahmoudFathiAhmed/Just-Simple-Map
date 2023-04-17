@@ -28,3 +28,56 @@ bool compareSingleDateWithListofDates(
     List<DateTime> allDates, DateTime myDate) {
   return allDates.contains(myDate);
 }
+String addLeadingZeroToString(String str) {
+  if (str.length == 1) {
+    return "0$str";
+  } else {
+    return str;
+  }
+}
+int addLeadingZeroToStringThenInt(String str) {
+  if (str.length == 1) {
+    return int.parse("0$str");
+  } else {
+    return int.parse(str);
+  }
+}
+
+List<DateTime> extractDatesWithDay(List<DateTime> dates, int dayOfWeek) {
+  return dates.where((date) => date.day == dayOfWeek).toList();
+}
+extension StringExtension on String {
+  String addLeadingZero() {
+    if (length == 1) {
+      return "0$this";
+    } else {
+      return this;
+    }
+  }
+}
+
+extension StringExtensionV2 on String {
+  int addLeadingZeroAndConvertToInt() {
+    if (length == 1) {
+      return int.parse("0$this");
+    } else {
+      return int.parse(this);
+    }
+  }
+}
+//important used
+extension IntExtension on int {
+  String addLeadingZero() {
+    if (this < 10) {
+      return "0$this";
+    } else {
+      return toString();
+    }
+  }
+}
+//important used
+extension DateTimeListExtensions on List<DateTime> {
+  List<DateTime> extractDatesWithDay(int selectedDay) {
+    return where((date) => date.day == selectedDay).toList();
+  }
+}

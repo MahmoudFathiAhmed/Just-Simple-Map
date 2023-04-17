@@ -26,13 +26,34 @@ class DateTimeError extends DateTimeState {
   @override
   List<Object> get props => [error];
 }
-class ChangeDayState extends DateTimeState{
 
+class AvailablilityStatusLoading extends DateTimeState {}
+
+class AvailablilityStatusSuccess extends DateTimeState {
+  final AvailableAndNotAvailableResponse availableAndNotAvailableResponse;
+
+  const AvailablilityStatusSuccess(this.availableAndNotAvailableResponse);
+
+  @override
+  List<Object> get props => [availableAndNotAvailableResponse];
 }
+
+class AvailablilityStatusError extends DateTimeState {
+  final String error;
+
+  const AvailablilityStatusError(this.error);
+
+  @override
+  List<Object> get props => [error];
+}
+
+class ChangeDayState extends DateTimeState {}
+
 class ChangeDayLoadingState extends DateTimeState {
   @override
   List<Object> get props => [];
 }
+
 class ChangeMinutesLoadingState extends DateTimeState {
   @override
   List<Object> get props => [];
@@ -52,6 +73,7 @@ class ChangeMinutesButtonColorstate extends DateTimeState {
   @override
   List<Object> get props => [];
 }
+
 class ChangeSelectedButtonstate extends DateTimeState {
   @override
   List<Object> get props => [];

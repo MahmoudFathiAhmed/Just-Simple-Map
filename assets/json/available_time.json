@@ -1,9 +1,37 @@
 {
-    "time": [
-        "2023-03-12 09:00:00.000",
-        "2023-03-12 10:00:00.000",
-        "2023-03-12 12:00:00.000",
-        "2023-03-12 13:00:00.000",
-        "2023-03-12 15:00:00.000"
+    "result": [
+        { "day": 17, "hour": 17, "ordersExist": true },
+        { "day": 17, "hour": 18, "ordersExist": false },
+        { "day": 17, "hour": 19, "ordersExist": false },
+        { "day": 17, "hour": 20, "ordersExist": true },
+        { "day": 17, "hour": 21, "ordersExist": false },
+        { "day": 17, "hour": 22, "ordersExist": false },
+        { "day": 17, "hour": 23, "ordersExist": false },
+        { "day": 18, "hour": 0, "ordersExist": false },
+        { "day": 18, "hour": 1, "ordersExist": false },
+        { "day": 18, "hour": 2, "ordersExist": false },
+        { "day": 18, "hour": 3, "ordersExist": false },
+        { "day": 18, "hour": 4, "ordersExist": false },
+        { "day": 18, "hour": 5, "ordersExist": false },
+        { "day": 18, "hour": 6, "ordersExist": false },
+        { "day": 18, "hour": 7, "ordersExist": false },
+        { "day": 18, "hour": 8, "ordersExist": false },
+        { "day": 18, "hour": 9, "ordersExist": false },
+        { "day": 18, "hour": 10, "ordersExist": true },
+        { "day": 18, "hour": 11, "ordersExist": false },
+        { "day": 18, "hour": 12, "ordersExist": false },
+        { "day": 18, "hour": 13, "ordersExist": false },
+        { "day": 18, "hour": 14, "ordersExist": false },
+        { "day": 18, "hour": 15, "ordersExist": true },
+        { "day": 18, "hour": 16, "ordersExist": false },
+        { "day": 18, "hour": 17, "ordersExist": false },
+        { "day": 18, "hour": 18, "ordersExist": false },
+        { "day": 18, "hour": 19, "ordersExist": false },
+        { "day": 18, "hour": 20, "ordersExist": false },
+        { "day": 18, "hour": 21, "ordersExist": false },
+        { "day": 18, "hour": 22, "ordersExist": false },
+        { "day": 18, "hour": 23, "ordersExist": false },
+        { "day": 19, "hour": 0, "ordersExist": false },
+        { "day": 19, "hour": 1, "ordersExist": false}
     ]
 }

@@ -90,13 +90,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (BuildContext context) => DateTimeCubit(),
-        ),
-      ],
-      child: GetMaterialApp(
+    return GetMaterialApp(
         navigatorKey: navigatorKey,
         title: 'Locations Work',
         debugShowCheckedModeBanner: false,
@@ -104,7 +98,6 @@ class _MyAppState extends State<MyApp> {
           primarySwatch: Colors.blue,
         ),
         onGenerateRoute: AppRoutes.onGenerateRoute,
-      ),
     );
   }
 }
