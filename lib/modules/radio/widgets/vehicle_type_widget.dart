@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
 class VehicleTypeWidget extends StatelessWidget {
   final String text;
   final double price;

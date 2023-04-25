@@ -18,7 +18,6 @@ import 'package:locations_work/core/helpers/bloc_observer.dart';
 import 'package:locations_work/core/helpers/notifications_helper.dart';
 import 'package:locations_work/core/helpers/service_locator.dart';
 import 'package:locations_work/core/routes/app_routes.dart';
-import 'package:locations_work/modules/date_time/cubit/cubit/date_time_cubit.dart';
 import 'package:locations_work/modules/firebase_notifications/local_data_source/database_helper.dart';
 import 'package:locations_work/modules/firebase_notifications/views/firebase_notifications_screen.dart';
 
@@ -35,6 +34,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   );
   debugPrint('${message.notification}');
 }
+
 final navigatorKey = GlobalKey<NavigatorState>();
 
 Future<void> main() async {
@@ -70,6 +70,8 @@ Future<void> main() async {
 
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   ServicesLocator().init();
+  // cameras = await availableCameras();
+
   runApp(const MyApp());
 }
 
@@ -91,13 +93,30 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        navigatorKey: navigatorKey,
-        title: 'Locations Work',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        onGenerateRoute: AppRoutes.onGenerateRoute,
+      navigatorKey: navigatorKey,
+      title: 'Locations Work',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.light(
+        useMaterial3: true,
+      ).copyWith(
+          colorScheme: ColorScheme(
+            brightness: Brightness.dark,
+            primary: Colors.blue,
+            onPrimary: Colors.white,
+            secondary: Colors.blueAccent,
+            onSecondary: Colors.white,
+            error: Colors.red,
+            onError: Colors.white,
+            background: Colors.white,
+            onBackground: Colors.black,
+            surface: Colors.grey.shade200,
+            onSurface: Colors.black,
+          ),
+          appBarTheme: AppBarTheme(
+              centerTitle: true,
+              backgroundColor: Colors.blue.withOpacity(0.1),
+              titleTextStyle: Theme.of(context).textTheme.titleLarge)),
+      onGenerateRoute: AppRoutes.onGenerateRoute,
     );
   }
 }

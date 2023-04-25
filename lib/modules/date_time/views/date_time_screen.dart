@@ -54,7 +54,7 @@ class _DateTimeScreenState extends State<DateTimeScreen> {
                 String day = item.day!.addLeadingZero();
                 String hour = item.hour!.addLeadingZero();
                 String dayHour =
-                    '${DateTime.now().year}-${DateTime.now().month.addLeadingZero()}-${day} $hour:00:00.000Z';
+                    '${DateTime.now().year}-${DateTime.now().month.addLeadingZero()}-$day $hour:00:00.000Z';
                 DateTime dayHourDateTime = DateTime.parse(dayHour).toLocal();
                 dayHourList.add(dayHourDateTime);
                 allHoursList.add(hour);
@@ -71,10 +71,10 @@ class _DateTimeScreenState extends State<DateTimeScreen> {
                       controller: controller,
                       initialSelectedDate: DateTime.now(),
                       onDateChange: (selectedDate) {
-                        print(
+                        debugPrint(
                             'selected Date: ${selectedDate.day},day Hour List First: ${dayHourList.first.day}');
-                        print(
-                            dayHourList.extractDatesWithDay(selectedDate.day));
+                        debugPrint(
+                            '${dayHourList.extractDatesWithDay(selectedDate.day)}');
                         dayHoursList =
                             dayHourList.extractDatesWithDay(selectedDate.day);
                         mySelectedDate =

@@ -1,4 +1,5 @@
-import 'package:camera/camera.dart';
+import 'dart:io';
+
 import 'package:locations_work/modules/screen_navigate/models/my_model.dart';
 
 class LatLonFromMapScreenArgs {
@@ -8,10 +9,10 @@ class LatLonFromMapScreenArgs {
   LatLonFromMapScreenArgs(this.lat, this.long);
 }
 
-class ImagePreviewScreenArgs {
-  final XFile file;
+class PicturePreviewScreenArgs {
+  File? file;
 
-  ImagePreviewScreenArgs(this.file);
+  PicturePreviewScreenArgs({this.file});
 }
 
 class MyArgument {
@@ -19,9 +20,3 @@ class MyArgument {
 
   MyArgument({this.myModel});
 }
-
-// class FirebaseNotificationsScreenArgs {
-//   final String body;
-
-//   FirebaseNotificationsScreenArgs({required this.body});
-// }

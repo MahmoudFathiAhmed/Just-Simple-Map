@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:locations_work/core/routes/routes_arguments.dart';
-import 'package:locations_work/modules/camera/views/image_preview_screen.dart';
-import 'package:locations_work/modules/camera2/views/add_screen.dart';
-import 'package:locations_work/modules/camera2/views/camera2.dart';
+import 'package:locations_work/modules/camera/views/camera_screen.dart';
+import 'package:locations_work/modules/camera/views/picture_preview.dart';
 import 'package:locations_work/modules/contact_us/views/contact_us_screen.dart';
 import 'package:locations_work/modules/country_code/views/country_code_screen.dart';
 import 'package:locations_work/modules/date_time/views/date_time_screen.dart';
@@ -13,14 +12,11 @@ import 'package:locations_work/modules/just_lat_long/views/just_lat_long_screen.
 import 'package:locations_work/modules/lat_long_from_map_screen/views/lat_long_from_map_screen.dart';
 import 'package:locations_work/modules/main/views/main_screen.dart';
 import 'package:locations_work/modules/notifications/views/notifications_screen.dart';
-import 'package:locations_work/modules/radio/views/radio_screen.dart';
 import 'package:locations_work/modules/radio_list_tile/views/radio_listtile_screen.dart';
 import 'package:locations_work/modules/random_colors/views/random_colors_screen.dart';
 import 'package:locations_work/modules/screen_navigate/views/screen1.dart';
 import 'package:locations_work/modules/screen_navigate/views/screen2.dart';
 import 'package:locations_work/modules/screen_navigate/views/screen3.dart';
-import 'package:locations_work/modules/test1/views/test1.dart';
-import 'package:locations_work/modules/test_module/views/test_screen.dart';
 import 'package:locations_work/modules/update_order/views/select_date_update_order_screen.dart';
 
 class Routes {
@@ -31,23 +27,23 @@ class Routes {
   static const String googleMapScreenRoute = '/googleMapScreenRoute';
   static const String latLongFromMapScreenRoute = '/latLongFromMapScreenRoute';
   static const String dateTimeScreenRoute = '/dateTimeScreenRoute';
-  static const String testScreenRoute = '/testScreenRoute';
   static const String screen1Route = '/screen1Route';
   static const String screen2Route = '/screen2Route';
   static const String screen3Route = '/screen3Route';
-  static const String addScreenRoute = '/addScreenRoute';
-  static const String camera2ScreenRoute = '/camera2ScreenRoute';
-  static const String imagePreviewScreenRoute = '/imagePreviewScreenRoute';
   static const String notificationsScreenRoute = '/notificationsScreenRoute';
   static const String dictionaryScreenRoute = '/dictionaryScreenRoute';
   static const String randomColorScreenRoute = '/randomColorScreenRoute';
-  static const String firebaseNotificationsScreenRoute = '/firebaseNotificationsScreenRoute';
-  static const String selectDateUpdateOrderScreenRoute = '/selectDateUpdateOrderScreenRoute';
+  static const String firebaseNotificationsScreenRoute =
+      '/firebaseNotificationsScreenRoute';
+  static const String selectDateUpdateOrderScreenRoute =
+      '/selectDateUpdateOrderScreenRoute';
   static const String countryCodeScreenRoute = '/countryCodeScreenRoute';
-  static const String test1ScreenRoute = '/test1ScreenRoute';
   static const String radioScreenRoute = '/radioScreenRoute';
   static const String radioListtileScreenRoute = '/radioListtileScreenRoute';
   static const String contactUsScreenRoute = '/contactUsScreenRoute';
+  static const String dateTime1ScreenRoute = '/dateTime1ScreenRoute';
+  static const String picturePreviewScreenRoute = '/picturePreviewScreenRoute';
+  static const String cameraScreenRoute = '/cameraScreenRoute';
 }
 
 class AppRoutes {
@@ -55,6 +51,8 @@ class AppRoutes {
     switch (routeSettings.name) {
       //initial
       case Routes.initialRoute:
+        return MaterialPageRoute(builder: (context) => const MainScreen());
+      case Routes.mainScreenRoute:
         return MaterialPageRoute(builder: (context) => const MainScreen());
       //lat long screen
       case Routes.justlatLongScreenRoute:
@@ -64,29 +62,18 @@ class AppRoutes {
       case Routes.googleMapScreenRoute:
         return MaterialPageRoute(
             builder: (context) => const GoogleMapsScreen());
-      //testScreen
-      case Routes.testScreenRoute:
-        return MaterialPageRoute(builder: (context) => const TestScreen());
       //date Time Screen
       case Routes.dateTimeScreenRoute:
         return MaterialPageRoute(builder: (context) => const DateTimeScreen());
-      // case Routes.cameraScreenRoute:
-      //   return MaterialPageRoute(builder: (context) => const CameraScreen());
-      case Routes.addScreenRoute:
-        return MaterialPageRoute(builder: (context) => const AddScreen());
-      case Routes.camera2ScreenRoute:
-        return MaterialPageRoute(builder: (context) => const Camera2Screen());
       case Routes.notificationsScreenRoute:
-        return MaterialPageRoute(builder: (context) => const NotificationsScreen());
-      case Routes.dictionaryScreenRoute:
-        return MaterialPageRoute(builder: (context) => const DictionaryScreen());
-      case Routes.randomColorScreenRoute:
-        return MaterialPageRoute(builder: (context) => const RandomColorScreen());
-      case Routes.imagePreviewScreenRoute:
-        ImagePreviewScreenArgs imagePreviewScreenArgs =
-            routeSettings.arguments as ImagePreviewScreenArgs;
         return MaterialPageRoute(
-            builder: (context) => ImagePreviewScreen(file: imagePreviewScreenArgs.file,));
+            builder: (context) => const NotificationsScreen());
+      case Routes.dictionaryScreenRoute:
+        return MaterialPageRoute(
+            builder: (context) => const DictionaryScreen());
+      case Routes.randomColorScreenRoute:
+        return MaterialPageRoute(
+            builder: (context) => const RandomColorScreen());
       //lat long from map screen
       case Routes.latLongFromMapScreenRoute:
         LatLonFromMapScreenArgs latLonFromMapScreenArgs =
@@ -109,21 +96,28 @@ class AppRoutes {
         return MaterialPageRoute(
             builder: (context) => Screen3(myModel: myArgument.myModel!));
       case Routes.firebaseNotificationsScreenRoute:
-        // FirebaseNotificationsScreenArgs firebaseNotificationsScreenArgs = routeSettings.arguments as FirebaseNotificationsScreenArgs;
         return MaterialPageRoute(
             builder: (context) => const FirebaseNotificationsScreen());
       case Routes.selectDateUpdateOrderScreenRoute:
-        return MaterialPageRoute(builder: (context) => const SelectDateUpdateOrderScreen());
+        return MaterialPageRoute(
+            builder: (context) => const SelectDateUpdateOrderScreen());
       case Routes.countryCodeScreenRoute:
-        return MaterialPageRoute(builder: (context) => const CountryCodeScreen());
-      case Routes.test1ScreenRoute:
-        return MaterialPageRoute(builder: (context) => const Test1Screen());
-      // case Routes.radioScreenRoute:
-      //   return MaterialPageRoute(builder: (context) => const RadioScreen());
+        return MaterialPageRoute(
+            builder: (context) => const CountryCodeScreen());
       case Routes.radioListtileScreenRoute:
-        return MaterialPageRoute(builder: (context) => const RadioListtileScreen());
+        return MaterialPageRoute(
+            builder: (context) => const RadioListtileScreen());
       case Routes.contactUsScreenRoute:
         return MaterialPageRoute(builder: (context) => const ContactUsScreen());
+      case Routes.picturePreviewScreenRoute:
+        PicturePreviewScreenArgs? picturePreviewScreenArgs =
+            routeSettings.arguments as PicturePreviewScreenArgs?;
+        return MaterialPageRoute(
+            builder: (context) => PicturePreviewScreen(
+                  file: picturePreviewScreenArgs?.file,
+                ));
+      case Routes.cameraScreenRoute:
+        return MaterialPageRoute(builder: (context) => const CameraScreen());
       default:
         return undefinedRoute();
     }

@@ -15,3 +15,5 @@ class VehicleSelected extends VehicleEvent {
   @override
   List<Object> get props => [id];
 }
+
+class GetAllVehiclesEvent extends VehicleEvent{}
