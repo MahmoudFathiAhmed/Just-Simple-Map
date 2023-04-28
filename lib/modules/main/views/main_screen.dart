@@ -1,4 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
+import 'package:get/get.dart';
+import 'package:locations_work/core/helpers/app_prefs.dart';
+import 'package:locations_work/core/helpers/localization_helper.dart';
+import 'package:locations_work/core/helpers/service_locator.dart';
 import 'package:locations_work/core/routes/app_routes.dart';
 import 'package:locations_work/modules/main/widgets/exit_confirmation_dialog.dart';
 
@@ -29,6 +35,14 @@ class _MainScreenState extends State<MainScreen> {
       },
       child: SafeArea(
         child: Scaffold(
+          appBar: AppBar(
+            leading: IconButton(icon: const Icon(Icons.language),onPressed: ()async{
+              await LocalizationHelper.changeLanguage(context);
+                  Get.updateLocale(context.locale);
+                  await getIt.get<AppPreferences>().changeAppLanguage();
+                  Phoenix.rebirth(context);
+            },),
+          ),
           body: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             padding: const EdgeInsets.symmetric(vertical: 40),
@@ -99,13 +113,6 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(
-                          context, Routes.countryCodeScreenRoute);
-                    },
-                    child: const Text('Country Code Screen'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
                       Navigator.pushNamed(context, Routes.contactUsScreenRoute);
                     },
                     child: const Text('contact us'),
@@ -123,6 +130,13 @@ class _MainScreenState extends State<MainScreen> {
                           context, Routes.picturePreviewScreenRoute);
                     },
                     child: const Text('picture'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(
+                          context, Routes.transScreenRoute);
+                    },
+                    child: const Text('Trans'),
                   ),
                 ],
               ),

@@ -3,7 +3,6 @@ import 'package:locations_work/core/routes/routes_arguments.dart';
 import 'package:locations_work/modules/camera/views/camera_screen.dart';
 import 'package:locations_work/modules/camera/views/picture_preview.dart';
 import 'package:locations_work/modules/contact_us/views/contact_us_screen.dart';
-import 'package:locations_work/modules/country_code/views/country_code_screen.dart';
 import 'package:locations_work/modules/date_time/views/date_time_screen.dart';
 import 'package:locations_work/modules/date_time/google_map/views/google_map_screen.dart';
 import 'package:locations_work/modules/dictionary/views/dictionary_screen.dart';
@@ -17,6 +16,7 @@ import 'package:locations_work/modules/random_colors/views/random_colors_screen.
 import 'package:locations_work/modules/screen_navigate/views/screen1.dart';
 import 'package:locations_work/modules/screen_navigate/views/screen2.dart';
 import 'package:locations_work/modules/screen_navigate/views/screen3.dart';
+import 'package:locations_work/modules/translation/views/trans_screen.dart';
 import 'package:locations_work/modules/update_order/views/select_date_update_order_screen.dart';
 
 class Routes {
@@ -37,13 +37,13 @@ class Routes {
       '/firebaseNotificationsScreenRoute';
   static const String selectDateUpdateOrderScreenRoute =
       '/selectDateUpdateOrderScreenRoute';
-  static const String countryCodeScreenRoute = '/countryCodeScreenRoute';
   static const String radioScreenRoute = '/radioScreenRoute';
   static const String radioListtileScreenRoute = '/radioListtileScreenRoute';
   static const String contactUsScreenRoute = '/contactUsScreenRoute';
   static const String dateTime1ScreenRoute = '/dateTime1ScreenRoute';
   static const String picturePreviewScreenRoute = '/picturePreviewScreenRoute';
   static const String cameraScreenRoute = '/cameraScreenRoute';
+  static const String transScreenRoute = '/transScreenRoute';
 }
 
 class AppRoutes {
@@ -101,9 +101,6 @@ class AppRoutes {
       case Routes.selectDateUpdateOrderScreenRoute:
         return MaterialPageRoute(
             builder: (context) => const SelectDateUpdateOrderScreen());
-      case Routes.countryCodeScreenRoute:
-        return MaterialPageRoute(
-            builder: (context) => const CountryCodeScreen());
       case Routes.radioListtileScreenRoute:
         return MaterialPageRoute(
             builder: (context) => const RadioListtileScreen());
@@ -118,6 +115,8 @@ class AppRoutes {
                 ));
       case Routes.cameraScreenRoute:
         return MaterialPageRoute(builder: (context) => const CameraScreen());
+      case Routes.transScreenRoute:
+        return MaterialPageRoute(builder: (context) => const TransScreen());
       default:
         return undefinedRoute();
     }

@@ -1,0 +1,90 @@
+{
+    "welcome_back":"Welcome Back!",
+    "send_verification_code":"We will send a verification Code on\n \t \t \t \t \t \t Your Phone number",
+    "mobile_number":"Mobile Number",
+    "continue":"Continue",
+    "have_not_account":" Don’t have an account? ",
+    "sign_up":"Signup",
+   
+    "lets_started": "Lets Get Started",
+    "send_code": "Send Code",
+    "have_account": "Already have an account? ",
+    "sign_in": "SignIn",
+   
+    "fill_form": "Fill The Form",
+    "complete_information": "Please Complete your information",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "email_address": "Email Address",
+    "create_account": "Create an account",
+   
+    "verify_number": "Verify your number",
+    "sent_you_digit_code":"We sent you a 6-digit code to verify your number",
+    "verify": "VERIFY",
+   
+    "enter_valid_phone_number": "Please enter valid number",
+    "enter_correct_phone_number": "Please enter correct number",
+   
+    "order_now": "Order Now",
+    "full_car_wash": "Full-Car Wash",
+    "details": "Details",
+    "exterior_and_interior )": "Exterior and interior )",
+    "subscribe": "Subscribe",
+    "soon": "Soon",
+   
+    "type_of_vehicle": "Type of Vehicle",
+    "select_the_type_of_vehicle": "Select the type of Vehicle",
+    "select_location'": "Select Location",
+   
+    "use_current_location": "use Current Location",
+    "home_location": "Home Location",
+    "office_location": "Office Location",
+    "select_date": "Select Date",
+   
+    "select_time": "Select Time",
+    "select_available_waiting_time": "Select Available Waiting Time",
+    "available_washer": "Available Washer",
+    "join_to_the_waiting_list": "Join to the waiting List",
+    "processed": "Processed",
+    "confirm_time": "Confirm Time",
+    "confirm": "Confirm",
+   
+    "add_coupon": "Add Coupon",
+    "extra_services": "Extra services",
+    "user_coupon": "Use Coupon",
+    "enter_your_coupon": "Enter Your Coupon",
+    "check": "Check",
+    "total_amount": "Total amount:  ",
+   
+    "pay": "Pay",
+    "credit_card": "Credit Number",
+    "name_of_card_holder": "Name Of Card Holder",
+    "wallet": "Wallet",
+    "cashPayment": "Cash Payment",
+   
+    "confirm_order": "Confirm Order",
+    "location_colon": "Location:",
+    "time_and_date": "Time & Date",
+    "type_of_service": "Type of service",
+    "total_payment": "Total Payment",
+    "location": "Location",
+    "the_order_has_been_submitted": "The order has been submitted",
+    "the_order_has_been_editted": "The order has been edited",
+    "the_order_has_been_delteted": "The order has been deleted",
+    "go_to_my_order": "Go to My order",
+    "home": "Home",
+   
+    "my_orders": "My Orders",
+    "active": "Active",
+    "history": "History",
+   
+    "notifications": "Notifications",
+    "booking": "Booking",
+    "walletSidMenu": "Wallet",
+    "contactUs": "Contact Us",
+    "aboutUs": "About Us",
+    "privicyPolicy": "Privicy Policy",
+    "profile": "Profile",
+    "logout": "Logout"
+   
+   }

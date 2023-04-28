@@ -6,4 +6,6 @@ class NetworkConstants {
       'https://mahmoudfathiahmed.github.io/availabity_status_api/availability.json';
   static const String allVehiclesApi =
       'https://mahmoudfathiahmed.github.io/availabity_status_api/all_vehicles.json';
+  static const String transApi =
+      'https://mahmoudfathiahmed.github.io/availabity_status_api/trans.json';
 }

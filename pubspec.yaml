@@ -25,8 +25,9 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^8.1.2
   flutter_local_notifications: ^13.0.0
-  flutter_phoenix: ^1.1.0
+  flutter_phoenix: ^1.1.1
   flutter_screenutil: ^5.7.0
+  flutter_svg: ^2.0.5
   geocoding: ^2.0.5
   geolocator: ^9.0.2
   get: ^4.6.5
@@ -40,7 +41,6 @@ dependencies:
   shared_preferences: ^2.0.18
   solid_lints: ^0.0.14
   sqflite: ^2.2.6
-  flutter_svg: ^2.0.5
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -52,6 +52,7 @@ flutter:
   assets:
     - assets/json/available_time.json
     - assets/images/
+    - assets/translations/
   # fonts:
   #   - family: Schyler
   #     fonts:

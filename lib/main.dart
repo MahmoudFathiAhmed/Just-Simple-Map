@@ -9,11 +9,14 @@
  * min sdk 21
  * 
  */
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:get/get.dart';
+import 'package:locations_work/core/app/resources/languages.dart';
 import 'package:locations_work/core/helpers/bloc_observer.dart';
 import 'package:locations_work/core/helpers/notifications_helper.dart';
 import 'package:locations_work/core/helpers/service_locator.dart';
@@ -35,11 +38,9 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   debugPrint('${message.notification}');
 }
 
-final navigatorKey = GlobalKey<NavigatorState>();
-
 Future<void> main() async {
-  // cameras = await availableCameras();
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
 
   await Firebase.initializeApp();
   final fcmToken = await FirebaseMessaging.instance.getToken();
@@ -72,7 +73,10 @@ Future<void> main() async {
   ServicesLocator().init();
   // cameras = await availableCameras();
 
-  runApp(const MyApp());
+  runApp(EasyLocalization(
+      path: localizationPath,
+      supportedLocales: const [arabicLocale, englishLocale],
+      child: Phoenix(child: const MyApp())));
 }
 
 class MyApp extends StatefulWidget {
@@ -93,9 +97,11 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      navigatorKey: navigatorKey,
       title: 'Locations Work',
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       theme: ThemeData.light(
         useMaterial3: true,
       ).copyWith(
