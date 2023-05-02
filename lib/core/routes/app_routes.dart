@@ -5,6 +5,7 @@ import 'package:locations_work/modules/camera/views/picture_preview.dart';
 import 'package:locations_work/modules/contact_us/views/contact_us_screen.dart';
 import 'package:locations_work/modules/date_time/views/date_time_screen.dart';
 import 'package:locations_work/modules/date_time/google_map/views/google_map_screen.dart';
+import 'package:locations_work/modules/datetime2/views/datetime2_screen.dart';
 import 'package:locations_work/modules/dictionary/views/dictionary_screen.dart';
 import 'package:locations_work/modules/firebase_notifications/views/firebase_notifications_screen.dart';
 import 'package:locations_work/modules/just_lat_long/views/just_lat_long_screen.dart';
@@ -44,6 +45,7 @@ class Routes {
   static const String picturePreviewScreenRoute = '/picturePreviewScreenRoute';
   static const String cameraScreenRoute = '/cameraScreenRoute';
   static const String transScreenRoute = '/transScreenRoute';
+  static const String dateTime2ScreenRoute = '/dateTime2ScreenRoute';
 }
 
 class AppRoutes {
@@ -117,6 +119,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (context) => const CameraScreen());
       case Routes.transScreenRoute:
         return MaterialPageRoute(builder: (context) => const TransScreen());
+      case Routes.dateTime2ScreenRoute:
+        return MaterialPageRoute(builder: (context) => const DateTime2Screen());
       default:
         return undefinedRoute();
     }

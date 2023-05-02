@@ -4,6 +4,8 @@ class NetworkConstants {
   // API - Database constants
   static const String baseUrl =
       'https://mahmoudfathiahmed.github.io/availabity_status_api/availability.json';
+  static const String availabilityApi =
+      'https://mahmoudfathiahmed.github.io/availabity_status_api/availability.json';
   static const String allVehiclesApi =
       'https://mahmoudfathiahmed.github.io/availabity_status_api/all_vehicles.json';
   static const String transApi =

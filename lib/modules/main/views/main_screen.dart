@@ -36,12 +36,15 @@ class _MainScreenState extends State<MainScreen> {
       child: SafeArea(
         child: Scaffold(
           appBar: AppBar(
-            leading: IconButton(icon: const Icon(Icons.language),onPressed: ()async{
-              await LocalizationHelper.changeLanguage(context);
-                  Get.updateLocale(context.locale);
-                  await getIt.get<AppPreferences>().changeAppLanguage();
-                  Phoenix.rebirth(context);
-            },),
+            leading: IconButton(
+              icon: const Icon(Icons.language),
+              onPressed: () async {
+                await LocalizationHelper.changeLanguage(context);
+                Get.updateLocale(context.locale);
+                await getIt.get<AppPreferences>().changeAppLanguage();
+                Phoenix.rebirth(context);
+              },
+            ),
           ),
           body: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
@@ -133,10 +136,15 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(
-                          context, Routes.transScreenRoute);
+                      Navigator.pushNamed(context, Routes.transScreenRoute);
                     },
                     child: const Text('Trans'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, Routes.dateTime2ScreenRoute);
+                    },
+                    child: const Text('dateTime2'),
                   ),
                 ],
               ),
