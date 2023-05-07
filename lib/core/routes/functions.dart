@@ -51,9 +51,9 @@ List<DateTime> extractDatesWithDay(List<DateTime> dates, int dayOfWeek) {
 }
 
 bool isImpossibleToMakeOrder({required DateTime time}) {
-  return DateTime.now()
+  return DateTime.now().toLocal()
           .subtract(const Duration(minutes: 30))
-          .compareTo(time) ==
+          .compareTo(time.toLocal()) ==
       1;
 }
 

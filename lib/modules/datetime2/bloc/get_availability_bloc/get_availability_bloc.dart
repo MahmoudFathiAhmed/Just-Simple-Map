@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 
@@ -32,7 +33,7 @@ class GetAvailabilityBloc extends Bloc<GetAvailabilityEvent, GetAvailabilityStat
                 final month = DateTime.now().month;
                 final day = entry.day;
                 final hour = entry.hour;
-                print('year: $year, month: $month, day: $day, hour: $hour');
+                debugPrint('year: $year, month: $month, day: $day, hour: $hour');
                 return DateTime(year, month, day!, hour!);
               }).toList();
               emit(GetAvailabilitySuccessState(dates));
