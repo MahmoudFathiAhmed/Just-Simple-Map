@@ -9,14 +9,7 @@ abstract class VehicleState extends Equatable {
 
 class VehicleInitial extends VehicleState {}
 
-class VehicleUpdated extends VehicleState {
-  final String selectedVehicleId;
 
-  const VehicleUpdated(this.selectedVehicleId);
-
-  @override
-  List<Object> get props => [selectedVehicleId];
-}
 
 class GetAllVehilcesSuccessState extends VehicleState {
   final VehicleResponse vehicleResponse;

@@ -8,14 +8,11 @@ import 'vehicle_state.dart';
 class VehicleBloc extends Bloc<VehicleEvent, VehicleState> {
   final VehicleRepository vehicleRepository;
   VehicleBloc(this.vehicleRepository) : super(VehicleInitial()) {
-    on<VehicleSelected>(updateVehicle);
+
     on<GetAllVehiclesEvent>(getallEventsVehicles);
   }
 
-  FutureOr<void> updateVehicle(
-      VehicleSelected event, Emitter<VehicleState> emit) {
-    emit(VehicleUpdated(event.id));
-  }
+
 
   FutureOr<void> getallEventsVehicles(
       GetAllVehiclesEvent event, Emitter<VehicleState> emit) async {
