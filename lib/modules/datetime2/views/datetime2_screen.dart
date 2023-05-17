@@ -1,10 +1,12 @@
-import 'package:date_picker_timeline/date_picker_timeline.dart';
+// import 'package:date_picker_timeline/date_picker_timeline.dart';
+import 'package:date_picker_timetable/date_picker_timetable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:locations_work/core/helpers/service_locator.dart';
 import 'package:locations_work/core/routes/functions.dart';
 import 'package:locations_work/modules/datetime2/bloc/get_availability_bloc/get_availability_bloc.dart';
 import 'package:locations_work/modules/datetime2/bloc/selected_button_bloc/bloc/selected_button_bloc.dart';
+import 'package:locations_work/modules/datetime2/bloc/selected_minutes_button_bloc/bloc/selected_minutes_button_bloc.dart';
 import 'package:locations_work/modules/datetime2/bloc/time_picker_bloc/time_picker_bloc.dart';
 import 'package:locations_work/modules/datetime2/widgets/hour_button_widget.dart';
 import 'package:locations_work/modules/datetime2/widgets/minutes_button_widget.dart';
@@ -18,6 +20,8 @@ class DateTime2Screen extends StatelessWidget {
     List<DateTime> notAvailable = [];
     int? selectedIndex;
     String finalDateSelected = '';
+    String nnnn = '';
+    DateTime? mm;
 
     return MultiBlocProvider(
       providers: [
@@ -109,86 +113,117 @@ class DateTime2Screen extends StatelessWidget {
                                               .contains(allHoursList[index])
                                           ? Colors.orange
                                           : Colors.blue,
-                                  onTap: isImpossibleToMakeOrder(
-                                          time: allHoursList[index])
-                                      ? null
-                                      : () {
-                                          debugPrint(
-                                              '*****${allHoursList[index]}');
-                                          context.read<TimePickerBloc>().add(
-                                              HourSelectedEvent(
-                                                  allHoursList[index]));
-                                          showModalBottomSheet(
-                                            elevation: 10,
-                                            backgroundColor: Colors.white,
-                                            context: context,
-                                            builder: (ctx) {
-                                              return BlocProvider(
-                                                create: (context) =>
-                                                    SelectedButtonBloc(),
-                                                child: BlocBuilder<
-                                                    SelectedButtonBloc,
-                                                    SelectedButtonState>(
-                                                  builder: (context,
-                                                      selectedButtonState) {
-                                                    if (selectedButtonState
-                                                        is SelectedButtonUpdatedState) {
-                                                      selectedIndex =
-                                                          selectedButtonState
-                                                              .index;
-                                                    }
-                                                    return SizedBox(
-                                                      height: 200,
-                                                      child: ListView.builder(
-                                                        physics:
-                                                            const BouncingScrollPhysics(),
-                                                        scrollDirection:
-                                                            Axis.horizontal,
-                                                        itemCount: x.length,
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .all(10),
-                                                        itemBuilder:
-                                                            (context, index) {
-                                                          return MinutesButtonWidget(
-                                                              hour: x[index],
-                                                              selected:
-                                                                  selectedIndex ==
-                                                                      index,
-                                                              availabilityColor:
-                                                                  Colors.blue,
-                                                              onTap: () {
-                                                                finalDateSelected = x[
-                                                                        index]
-                                                                    .toString();
-                                                                context
-                                                                    .read<
-                                                                        SelectedButtonBloc>()
-                                                                    .add(SelectedButtonChangedEvent(
-                                                                        index));
-                                                                finalDateSelected = x[
-                                                                        index]
-                                                                    .toString();
-                                                                selectedIndex =
-                                                                    index;
-                                                                debugPrint(
-                                                                    '*&^% Hour Selected: ${x[index]} ');
-                                                                // Navigator.pop(context, true);
-                                                              });
-                                                        },
-                                                      ),
-                                                    );
-                                                  },
-                                                ),
-                                              );
+                                  onTap:
+                                      isImpossibleToMakeOrder(
+                                              time: allHoursList[index])
+                                          ? null
+                                          : () {
+                                              debugPrint(
+                                                  '*****${allHoursList[index]}');
+                                              context
+                                                  .read<TimePickerBloc>()
+                                                  .add(HourSelectedEvent(
+                                                      allHoursList[index]));
+                                              showModalBottomSheet(
+                                                elevation: 10,
+                                                backgroundColor: Colors.white,
+                                                context: context,
+                                                builder: (ctx) {
+                                                  return BlocProvider(
+                                                    create: (context) =>
+                                                        SelectedButtonBloc(),
+                                                    child: BlocBuilder<
+                                                        SelectedButtonBloc,
+                                                        SelectedButtonState>(
+                                                      builder: (context,
+                                                          selectedButtonState) {
+                                                        if (selectedButtonState
+                                                            is SelectedButtonUpdatedState) {
+                                                          selectedIndex =
+                                                              selectedButtonState
+                                                                  .index;
+                                                        }
+                                                        return SizedBox(
+                                                          height: 200,
+                                                          child: BlocProvider(
+                                                            create: (context) =>
+                                                                SelectedMinutesButtonBloc(),
+                                                            child: BlocConsumer<
+                                                                SelectedMinutesButtonBloc,
+                                                                SelectedMinutesButtonState>(
+                                                              listener: (context,
+                                                                  selectedMinutesButtonState) {
+                                                                if (selectedMinutesButtonState
+                                                                    is SelectMinutesButtonState) {
+                                                                  nnnn = selectedMinutesButtonState
+                                                                      .hourWithMinutes
+                                                                      .toString();
+                                                                  mm = selectedMinutesButtonState
+                                                                      .hourWithMinutes;
+                                                                }
+                                                              },
+                                                              builder: (context,
+                                                                  selectedMinutesButtonState) {
+                                                                return ListView
+                                                                    .builder(
+                                                                  physics:
+                                                                      const BouncingScrollPhysics(),
+                                                                  scrollDirection:
+                                                                      Axis.horizontal,
+                                                                  itemCount:
+                                                                      x.length,
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                          .all(10),
+                                                                  itemBuilder:
+                                                                      (context,
+                                                                          index) {
+                                                                    return MinutesButtonWidget(
+                                                                        hour: x[
+                                                                            index],
+                                                                        selected:
+                                                                            selectedIndex ==
+                                                                                index,
+                                                                        availabilityColor:
+                                                                            Colors
+                                                                                .blue,
+                                                                        onTap:
+                                                                            () {
+                                                                          finalDateSelected =
+                                                                              x[index].toString();
+                                                                          // context
+                                                                          //     .read<SelectedButtonBloc>()
+                                                                          //     .add(SelectedButtonChangedEvent(index));
+                                                                          context
+                                                                              .read<SelectedMinutesButtonBloc>()
+                                                                              .add(SelectMinutesButtonEvent(x[index]));
+                                                                          finalDateSelected =
+                                                                              x[index].toString();
+                                                                          selectedIndex =
+                                                                              index;
+                                                                          debugPrint(
+                                                                              '*&^% Hour Selected: ${x[index]} ');
+                                                                          // Navigator.pop(context, true);
+                                                                        });
+                                                                  },
+                                                                );
+                                                              },
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                    ),
+                                                  );
+                                                },
+                                              ).whenComplete(() {
+                                                selectedIndex = -1;
+                                                print(nnnn);
+                                              });
                                             },
-                                          ).whenComplete(() {
-                                            selectedIndex = -1;
-                                          });
-                                        },
                                 );
                               }),
                         ),
+                  mm != null ? Text(mm.toString()) : const SizedBox(),
                   Text(finalDateSelected)
                 ],
               );

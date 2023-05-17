@@ -1,9 +1,10 @@
+import 'package:date_picker_timetable/date_picker_timetable.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:locations_work/modules/date_time/views/date_time_screen.dart';
 import 'package:locations_work/modules/date_time/widgets/minutes_button.dart';
 import 'package:locations_work/modules/update_order/functions/functions.dart';
-import 'package:date_picker_timeline/date_picker_timeline.dart';
+// import 'package:date_picker_timeline/date_picker_timeline.dart';
 
 class SelectDateUpdateOrderScreen extends StatefulWidget {
   const SelectDateUpdateOrderScreen({super.key});
