@@ -6,11 +6,14 @@ abstract class SelectedButtonEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
-class SelectedButtonChangedEvent extends SelectedButtonEvent{
-  final int index;
 
-  const SelectedButtonChangedEvent(this.index);
+class SelectedButtonChangedEvent extends SelectedButtonEvent {
+  // final int index;
+  final DateTime date;
+  // const SelectedButtonChangedEvent(this.index);
+  const SelectedButtonChangedEvent(this.date);
   @override
-  List<Object> get props => [index];
+  List<Object> get props => [date];
+  // List<Object> get props => [index];
 }
 // class ResetSelectedButtonEvent extends SelectedButtonEvent{}

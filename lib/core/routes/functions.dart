@@ -157,3 +157,15 @@ extension DateTimeListExtensions on List<DateTime> {
     return where((date) => date.day == selectedDay).toList();
   }
 }
+//exact hours
+extension DateTimeExactHour on DateTime {
+  DateTime toExactHour() {
+    return DateTime(year, month, day, hour);
+  }
+}
+
+extension DateTimeIsNotToday on DateTime {
+  bool isNotToday() {
+    return year != DateTime.now().year || month != DateTime.now().month || day != DateTime.now().day;
+  }
+}

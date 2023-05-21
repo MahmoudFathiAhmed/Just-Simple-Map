@@ -6,7 +6,8 @@ abstract class GetAvailabilityEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
-class GetWaitingEvent extends GetAvailabilityEvent{
+
+class GetWaitingEvent extends GetAvailabilityEvent {
   @override
   List<Object> get props => [];
 }

@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:locations_work/core/routes/functions.dart';
@@ -30,15 +31,16 @@ class GetAvailabilityBloc
         .then((result) => result.fold((error) {
               emit(GetAvailabilityErrorState(error.message));
             }, (response) async {
-      final now = DateTime.now();
-      final year = now.year;
-      final month = DateTime.now().month.addLeadingZero();
-      final day = DateTime.now().day.addLeadingZero();
+              final now = DateTime.now();
+              final year = now.year;
+              final month = DateTime.now().month.addLeadingZero();
+              final day = DateTime.now().day.addLeadingZero();
               List<DateTime> notAvailable = response
                   .where((element) => element.isAvailable == false)
-                  .map((e) => DateTime.parse('$year-$month-$day ${e.time}').toLocal())
+                  .map((e) =>
+                      DateTime.parse('$year-$month-$day ${e.time}').toLocal())
                   .toList();
-                print(notAvailable);
+              debugPrint('$notAvailable');
               // final dates = response.result!
               //     .where((element) => element.ordersExist == true)
               //     .map((entry) {

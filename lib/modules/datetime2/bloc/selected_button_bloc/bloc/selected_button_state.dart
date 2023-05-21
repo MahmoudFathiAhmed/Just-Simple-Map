@@ -2,7 +2,7 @@ part of 'selected_button_bloc.dart';
 
 abstract class SelectedButtonState extends Equatable {
   const SelectedButtonState();
-  
+
   @override
   List<Object> get props => [];
 }
@@ -10,11 +10,12 @@ abstract class SelectedButtonState extends Equatable {
 class SelectedButtonInitial extends SelectedButtonState {}
 
 class SelectedButtonUpdatedState extends SelectedButtonState {
-  final int index;
+  final DateTime date;
+  // final int index;
 
-  const SelectedButtonUpdatedState(this.index);
+  const SelectedButtonUpdatedState(this.date);
 
   @override
-  List<Object> get props => [index];
+  List<Object> get props => [date];
 }
 // class ResetSelectedButtonState extends SelectedButtonState {}

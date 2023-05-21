@@ -17,20 +17,9 @@ class DaySelectedState extends TimePickerState {
   List<Object> get props => [hours];
 }
 
-class HourSelectedState extends TimePickerState {
-  final List<DateTime> hoursWithMinutes;
-  const HourSelectedState(this.hoursWithMinutes);
-  @override
-  List<Object> get props => [hoursWithMinutes];
-}
-
-
-// class HourWithMinutesSelectedState extends TimePickerState {
-//   final DateTime hoursWithMinutes;
-
-//   const HourWithMinutesSelectedState(this.hoursWithMinutes);
+// class HourSelectedState extends TimePickerState {
+//   final List<DateTime> hoursWithMinutes;
+//   const HourSelectedState(this.hoursWithMinutes);
 //   @override
 //   List<Object> get props => [hoursWithMinutes];
 // }
-
-

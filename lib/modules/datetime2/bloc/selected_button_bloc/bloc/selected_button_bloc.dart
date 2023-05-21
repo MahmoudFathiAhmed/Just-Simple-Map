@@ -15,7 +15,8 @@ class SelectedButtonBloc
 
   FutureOr<void> selectButton(
       SelectedButtonChangedEvent event, Emitter<SelectedButtonState> emit) {
-    emit(SelectedButtonUpdatedState(event.index));
+    emit(SelectedButtonUpdatedState(event.date));
+    // emit(SelectedButtonUpdatedState(event.index));
   }
 
   // FutureOr<void> resetButton(

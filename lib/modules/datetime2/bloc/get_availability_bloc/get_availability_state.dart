@@ -2,7 +2,7 @@ part of 'get_availability_bloc.dart';
 
 abstract class GetAvailabilityState extends Equatable {
   const GetAvailabilityState();
-  
+
   @override
   List<Object> get props => [];
 }

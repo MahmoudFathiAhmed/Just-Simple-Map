@@ -23,7 +23,6 @@ class HourSelectedEvent extends TimePickerEvent {
   List<Object> get props => [hour];
 }
 
-
 // class HourWithMinutesSelectedEvent extends TimePickerEvent {
 //   final DateTime hourWithMinutes;
 
@@ -31,5 +30,3 @@ class HourSelectedEvent extends TimePickerEvent {
 //   @override
 //   List<Object> get props => [hourWithMinutes];
 // }
-
-
