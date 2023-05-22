@@ -10,17 +10,10 @@ class SelectedButtonBloc
     extends Bloc<SelectedButtonEvent, SelectedButtonState> {
   SelectedButtonBloc() : super(SelectedButtonInitial()) {
     on<SelectedButtonChangedEvent>(selectButton);
-    // on<ResetSelectedButtonEvent>(resetButton);
   }
 
   FutureOr<void> selectButton(
       SelectedButtonChangedEvent event, Emitter<SelectedButtonState> emit) {
     emit(SelectedButtonUpdatedState(event.date));
-    // emit(SelectedButtonUpdatedState(event.index));
   }
-
-  // FutureOr<void> resetButton(
-  //     ResetSelectedButtonEvent event, Emitter<SelectedButtonState> emit) {
-  //   emit(SelectedButtonInitial());
-  // }
 }

@@ -10,7 +10,6 @@ import 'package:locations_work/modules/datetime2/bloc/time_picker_bloc/time_pick
 import 'package:locations_work/modules/datetime2/widgets/hour_button_widget.dart';
 import 'package:locations_work/modules/datetime2/widgets/minutes_button_widget.dart';
 
-///indicator
 class DateTime2Screen extends StatelessWidget {
   const DateTime2Screen({super.key});
 
@@ -20,6 +19,7 @@ class DateTime2Screen extends StatelessWidget {
     List<DateTime> notAvailable = [];
     DateTime selectedIndex = DateTime.now().subtract(const Duration(days: 3));
     String finalDateSelected = '';
+    bool isWaiting = false;
     return MultiBlocProvider(
       providers: [
         BlocProvider<TimePickerBloc>.value(
@@ -106,28 +106,16 @@ class DateTime2Screen extends StatelessWidget {
                                                       .getFifteenMinutesIntervals();
                                               return HourButtonWidget(
                                                 hour: allHoursList[index],
-                                                color: isImpossibleToMakeOrder(
-                                                        time:
-                                                            allHoursList[index])
-                                                    ? Colors.grey.shade300
-                                                    : selectedIndex
-                                                                .toExactHour() ==
-                                                            allHoursList[index]
-                                                        ? Colors.blue
-                                                        : Colors.white,
+                                                color: hourButtonColor(
+                                                    myDate: allHoursList[index],
+                                                    selectedDate:
+                                                        selectedIndex),
                                                 availabilityColor:
-                                                    isImpossibleToMakeOrder(
-                                                            time: allHoursList[
-                                                                index])
-                                                        ? Colors.grey.shade300
-                                                        : notAvailable.contains(
-                                                                    allHoursList[
-                                                                        index]) ||
-                                                                allHoursList[
-                                                                        index]
-                                                                    .isNotToday()
-                                                            ? Colors.orange
-                                                            : Colors.blue,
+                                                    hourAvailableColor(
+                                                        myDate:
+                                                            allHoursList[index],
+                                                        notAvailable:
+                                                            notAvailable),
                                                 onTap:
                                                     isImpossibleToMakeOrder(
                                                             time: allHoursList[
@@ -155,6 +143,11 @@ class DateTime2Screen extends StatelessWidget {
                                                                           is SelectedButtonUpdatedState) {
                                                                         selectedIndex =
                                                                             selectedButtonState.date;
+                                                                        isNotAvailable(date: selectedIndex, notAvailable: notAvailable)
+                                                                            ? isWaiting =
+                                                                                true
+                                                                            : isWaiting =
+                                                                                false;
                                                                       }
                                                                       return SizedBox(
                                                                         height:
@@ -173,9 +166,8 @@ class DateTime2Screen extends StatelessWidget {
                                                                                   return MinutesButtonWidget(
                                                                                       hour: minutesList[index],
                                                                                       selected: selectedIndex == minutesList[index],
-                                                                                      availabilityColor: notAvailable.contains(minutesList[index]) || allHoursList[index].isNotToday() ? Colors.orange : Colors.blue,
+                                                                                      availabilityColor: minutesAvailableColor(myDate: minutesList[index], notAvailable: notAvailable),
                                                                                       onTap: () {
-                                                                                        finalDateSelected = minutesList[index].toString();
                                                                                         selectedButtonContext.read<SelectedButtonBloc>().add(SelectedButtonChangedEvent(minutesList[index]));
                                                                                         selectedMinutesButtonContext.read<SelectedMinutesButtonBloc>().add(SelectMinutesButtonEvent(minutesList[index]));
                                                                                         finalDateSelected = minutesList[index].toString();
@@ -203,7 +195,8 @@ class DateTime2Screen extends StatelessWidget {
                                       )
                                     : const Center(
                                         child: CircularProgressIndicator()),
-                            Text(finalDateSelected)
+                            Text(finalDateSelected),
+                            Text('$isWaiting')
                           ],
                         );
                       },

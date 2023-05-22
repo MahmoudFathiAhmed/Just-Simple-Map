@@ -1,4 +1,6 @@
 //functions
+import 'package:flutter/material.dart';
+
 DateTime utcDateTime(DateTime date) {
   return DateTime.utc(
     date.year,
@@ -51,10 +53,41 @@ List<DateTime> extractDatesWithDay(List<DateTime> dates, int dayOfWeek) {
 }
 
 bool isImpossibleToMakeOrder({required DateTime time}) {
-  return DateTime.now().toLocal()
+  return DateTime.now()
+          .toLocal()
           .subtract(const Duration(minutes: 30))
           .compareTo(time.toLocal()) ==
       1;
+}
+
+bool isNotAvailable(
+    {required List<DateTime> notAvailable, required DateTime date}) {
+  return notAvailable.contains(date) || date.isNotToday();
+}
+
+Color hourButtonColor(
+    {required DateTime myDate, required DateTime selectedDate}) {
+  return isImpossibleToMakeOrder(time: myDate)
+      ? Colors.grey.shade300
+      : selectedDate.toExactHour() == myDate
+          ? Colors.blue
+          : Colors.white;
+}
+
+Color hourAvailableColor({required DateTime myDate, required List<DateTime> notAvailable}){
+  return isImpossibleToMakeOrder(
+      time:myDate)
+      ? Colors.grey.shade300
+      : isNotAvailable(
+      notAvailable:
+      notAvailable,
+      date:
+      myDate)
+      ? Colors.orange
+      : Colors.blue;
+}
+Color minutesAvailableColor({required DateTime myDate, required List<DateTime> notAvailable}){
+  return isNotAvailable(notAvailable: notAvailable, date: myDate) ? Colors.orange : Colors.blue;
 }
 
 // if there is a member of list exist in another list
@@ -157,6 +190,7 @@ extension DateTimeListExtensions on List<DateTime> {
     return where((date) => date.day == selectedDay).toList();
   }
 }
+
 //exact hours
 extension DateTimeExactHour on DateTime {
   DateTime toExactHour() {
@@ -166,6 +200,8 @@ extension DateTimeExactHour on DateTime {
 
 extension DateTimeIsNotToday on DateTime {
   bool isNotToday() {
-    return year != DateTime.now().year || month != DateTime.now().month || day != DateTime.now().day;
+    return year != DateTime.now().year ||
+        month != DateTime.now().month ||
+        day != DateTime.now().day;
   }
 }
