@@ -146,6 +146,12 @@ class _MainScreenState extends State<MainScreen> {
                     },
                     child: const Text('dateTime2'),
                   ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, Routes.hooksRoute);
+                    },
+                    child: const Text('hooks examples'),
+                  ),
                 ],
               ),
             ),

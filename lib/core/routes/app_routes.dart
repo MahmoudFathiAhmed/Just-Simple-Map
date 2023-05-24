@@ -8,6 +8,10 @@ import 'package:locations_work/modules/date_time/google_map/views/google_map_scr
 import 'package:locations_work/modules/datetime2/views/datetime2_screen.dart';
 import 'package:locations_work/modules/dictionary/views/dictionary_screen.dart';
 import 'package:locations_work/modules/firebase_notifications/views/firebase_notifications_screen.dart';
+import 'package:locations_work/modules/hooks/views/firs_hook_example.dart';
+import 'package:locations_work/modules/hooks/views/hooks_screen.dart';
+import 'package:locations_work/modules/hooks/views/second_hook_example.dart';
+import 'package:locations_work/modules/hooks/views/third_hook_example.dart';
 import 'package:locations_work/modules/just_lat_long/views/just_lat_long_screen.dart';
 import 'package:locations_work/modules/lat_long_from_map_screen/views/lat_long_from_map_screen.dart';
 import 'package:locations_work/modules/main/views/main_screen.dart';
@@ -46,6 +50,10 @@ class Routes {
   static const String cameraScreenRoute = '/cameraScreenRoute';
   static const String transScreenRoute = '/transScreenRoute';
   static const String dateTime2ScreenRoute = '/dateTime2ScreenRoute';
+  static const String hooksRoute = '/hooksRoute';
+  static const String firstHookRoute = '/firstHookRoute';
+  static const String secondHookRoute = '/secondHookRoute';
+  static const String thirdHookRoute = '/thirdHookRoute';
 }
 
 class AppRoutes {
@@ -121,6 +129,14 @@ class AppRoutes {
         return MaterialPageRoute(builder: (context) => const TransScreen());
       case Routes.dateTime2ScreenRoute:
         return MaterialPageRoute(builder: (context) => const DateTime2Screen());
+      case Routes.hooksRoute:
+        return MaterialPageRoute(builder: (context) => const HooksScreen());
+      case Routes.firstHookRoute:
+        return MaterialPageRoute(builder: (context) => const FirstHookExample());
+      case Routes.secondHookRoute:
+        return MaterialPageRoute(builder: (context) => const SecondHookExample());
+      case Routes.thirdHookRoute:
+        return MaterialPageRoute(builder: (context) => const ThirdHookExample());
       default:
         return undefinedRoute();
     }
