@@ -122,6 +122,9 @@ class DateTime2Screen extends StatelessWidget {
                                                                 index])
                                                         ? null
                                                         : () {
+                                                      print('****** ${isImpossibleToMakeOrder(
+                                                          time: allHoursList[
+                                                          index])} ******');
                                                             debugPrint(
                                                                 '*****${allHoursList[index]}');
                                                             showModalBottomSheet(
@@ -165,14 +168,25 @@ class DateTime2Screen extends StatelessWidget {
                                                                                 itemBuilder: (context, index) {
                                                                                   return MinutesButtonWidget(
                                                                                       hour: minutesList[index],
-                                                                                      selected: selectedIndex == minutesList[index],
+                                                                                      buttonColor:  isImpossibleToMakeOrder2(time: minutesList[index])?Colors.grey.shade300:selectedIndex == minutesList[index]?Colors.blue:Colors.white,
+                                                                                      // selected: selectedIndex == minutesList[index],
                                                                                       availabilityColor: minutesAvailableColor(myDate: minutesList[index], notAvailable: notAvailable),
-                                                                                      onTap: () {
+                                                                                      onTap:
+                                                                                      isImpossibleToMakeOrder2(
+                                                                                          time: minutesList[
+                                                                                          index])
+                                                                                          ? null
+                                                                                          :
+                                                                                      () {
+                                                                                        print('****** ${isImpossibleToMakeOrder2(
+                                                                                            time: minutesList[
+                                                                                            index])} ******');
                                                                                         selectedButtonContext.read<SelectedButtonBloc>().add(SelectedButtonChangedEvent(minutesList[index]));
                                                                                         selectedMinutesButtonContext.read<SelectedMinutesButtonBloc>().add(SelectMinutesButtonEvent(minutesList[index]));
                                                                                         finalDateSelected = minutesList[index].toString();
                                                                                         debugPrint('*&^% Hour Selected: ${minutesList[index]} ');
-                                                                                      });
+                                                                                      }
+                                                                                      );
                                                                                 },
                                                                               ),
                                                                             ),

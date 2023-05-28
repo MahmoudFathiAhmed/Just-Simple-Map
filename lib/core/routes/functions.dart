@@ -59,6 +59,15 @@ bool isImpossibleToMakeOrder({required DateTime time}) {
           .compareTo(time.toLocal()) ==
       1;
 }
+bool isImpossibleToMakeOrder2({required DateTime time}) {
+  return time.difference(DateTime.now()).inMinutes<=15;
+    // DateTime.now()
+    //   .toLocal()
+    //   .difference(time).inMinutes<=15;
+  // subtract(const Duration(minutes: 30))
+  //     .compareTo(time.toLocal()) ==
+  //     1;
+}
 
 bool isNotAvailable(
     {required List<DateTime> notAvailable, required DateTime date}) {

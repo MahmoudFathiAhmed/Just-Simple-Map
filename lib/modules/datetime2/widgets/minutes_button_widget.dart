@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-
 class MinutesButtonWidget extends StatelessWidget {
   final DateTime hour;
   final Color buttonColor;
   final Color availabilityColor;
   final VoidCallback? onTap;
-  final bool selected;
-
+  // final bool selected;
   const MinutesButtonWidget({
     super.key,
     required this.hour,
     required this.availabilityColor,
     required this.onTap,
-    this.buttonColor = Colors.white,
-    required this.selected,
+    required this.buttonColor,
+    // this.buttonColor = Colors.white,
+    // required this.selected,
   });
 
   @override
@@ -28,7 +27,12 @@ class MinutesButtonWidget extends StatelessWidget {
             height: MediaQuery.of(context).size.height * .06,
             width: MediaQuery.of(context).size.width * .19,
             decoration: BoxDecoration(
-              color: selected ? Colors.blue : buttonColor,
+              color:
+              // isImpossibleToMakeOrder(
+              //     time: hour)
+              //     ? Colors.grey.shade300:
+              // selected ? Colors.blue :
+              buttonColor,
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
