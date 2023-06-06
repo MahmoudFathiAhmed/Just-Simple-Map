@@ -95,6 +95,41 @@ Color hourAvailableColor({required DateTime myDate, required List<DateTime> notA
       ? Colors.orange
       : Colors.blue;
 }
+
+extension NotINListOFDateExtension on List<DateTime> {
+  List<DateTime> notIn(List<DateTime> other) {
+    return where((element) => !other.contains(element)).toList();
+  }
+}
+extension AnyAfterNowBy on List<DateTime> {
+  bool anyAfterNowBy(int minutes) {
+    return any((element) => element.difference(DateTime.now()).inMinutes > minutes);
+  }
+}
+///very important
+Color hourAvailableColor3({required DateTime myDate, required List<DateTime> notAvailable,required List<DateTime> minutesList}){
+  List<DateTime> restMinutesList = minutesList.where((element) => element.difference(DateTime.now()).inMinutes > 15).toList();
+  if(isImpossibleToMakeOrder(time: myDate)){
+    return Colors.grey.shade300;
+  }else if(minutesList.notIn(notAvailable).isEmpty){
+    return Colors.blue;
+  }else if(restMinutesList.every((element) => notAvailable.contains(element))){
+    return Colors.orange;
+  }else{
+    return Colors.blue;
+  }
+
+  // return isImpossibleToMakeOrder(
+  //     time:myDate)
+  //     ? Colors.grey.shade300
+  //     : isNotAvailable(
+  //     notAvailable:
+  //     notAvailable,
+  //     date:
+  //     myDate)
+  //     ? Colors.orange
+  //     : Colors.blue;
+}
 Color minutesAvailableColor({required DateTime myDate, required List<DateTime> notAvailable}){
   return isNotAvailable(notAvailable: notAvailable, date: myDate) ? Colors.orange : Colors.blue;
 }

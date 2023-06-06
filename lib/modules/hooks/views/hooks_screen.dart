@@ -9,6 +9,7 @@ class HooksScreen extends StatelessWidget {
     //use state create variable and listen to change => setState
     //use effect => like init state and dispose but avoid using them
     //useMemoized => enable caching in app
+    //useRef => store data but (not render) when data changes (maintain data)
     return Scaffold(
       appBar: AppBar(),
       body: Center(
