@@ -5,6 +5,7 @@ import 'package:locations_work/core/network/dio_factory.dart';
 import 'package:locations_work/core/network/network_info.dart';
 import 'package:locations_work/modules/date_time/repository/date_time_repository.dart';
 import 'package:locations_work/modules/datetime2/repository/datetime2_repository.dart';
+import 'package:locations_work/modules/google_map/repository/map_repository.dart';
 import 'package:locations_work/modules/radio_list_tile/repository/vehicle_repository.dart';
 import 'package:locations_work/modules/translation/repository/trans_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -36,6 +37,7 @@ class ServicesLocator {
     getIt.registerLazySingleton<VehicleRepository>(() => VehicleRepository());
     getIt.registerLazySingleton<TransRepository>(() => TransRepository());
     getIt.registerLazySingleton<DateTime2Repository>(() => DateTime2Repository());
+    getIt.registerLazySingleton<MapRepository>(() => MapRepository());
 
   
   }

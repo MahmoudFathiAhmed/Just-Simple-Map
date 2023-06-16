@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:locations_work/core/routes/functions.dart';
@@ -18,7 +19,7 @@ class TimePickerBloc extends Bloc<TimePickerEvent, DaySelectedState> {
 
   FutureOr<void> selectDay(
       DaySelectedEvent event, Emitter<DaySelectedState> emit) {
-    print('*****${event.day}');
+    debugPrint('*****${event.day}');
     emit(DaySelectedState(event.day.getWorkHours()));
   }
 

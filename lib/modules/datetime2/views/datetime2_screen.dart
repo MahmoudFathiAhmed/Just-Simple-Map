@@ -122,7 +122,7 @@ class DateTime2Screen extends StatelessWidget {
                                                                 index])
                                                         ? null
                                                         : () {
-                                                      print('****** ${isImpossibleToMakeOrder(
+                                                      debugPrint('****** ${isImpossibleToMakeOrder(
                                                           time: allHoursList[
                                                           index])} ******');
                                                             debugPrint(
@@ -178,7 +178,7 @@ class DateTime2Screen extends StatelessWidget {
                                                                                           ? null
                                                                                           :
                                                                                       () {
-                                                                                        print('****** ${isImpossibleToMakeOrder2(
+                                                                                        debugPrint('****** ${isImpossibleToMakeOrder2(
                                                                                             time: minutesList[
                                                                                             index])} ******');
                                                                                         selectedButtonContext.read<SelectedButtonBloc>().add(SelectedButtonChangedEvent(minutesList[index]));

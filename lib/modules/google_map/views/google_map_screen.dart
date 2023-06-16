@@ -81,32 +81,32 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
             children: [
               position != null
                   ? Stack(
-                      alignment: AlignmentDirectional.bottomCenter,
-                      children: [
-                          Container(
-                            height: 240,
-                            padding: const EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                    blurRadius: 20,
-                                    color: Colors.grey.shade300),
-                              ],
-                            ),
-                            child: buildMap(),
-                          ),
-                          ElevatedButton(
-                              onPressed: () {
-                                _goToMyCurrentLocation();
-                              },
-                              child: const Text('get Current Location'))
-                        ])
-                  : const Center(
-                      child: CircularProgressIndicator(
-                        color: Colors.teal,
+                  alignment: AlignmentDirectional.bottomCenter,
+                  children: [
+                    Container(
+                      height: 240,
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                              blurRadius: 20,
+                              color: Colors.grey.shade300),
+                        ],
                       ),
+                      child: buildMap(),
                     ),
+                    ElevatedButton(
+                        onPressed: () {
+                          _goToMyCurrentLocation();
+                        },
+                        child: const Text('get Current Location'))
+                  ])
+                  : const Center(
+                child: CircularProgressIndicator(
+                  color: Colors.teal,
+                ),
+              ),
               const SizedBox(height: 20),
               Container(
                 height: 40,
@@ -120,7 +120,8 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
                 ),
                 child: Center(
                     child: Text(
-                        'current location coord: ${position?.latitude ?? ' '} , ${position?.longitude ?? ' '} ')),
+                        'current location coord: ${position?.latitude ??
+                            ' '} , ${position?.longitude ?? ' '} ')),
               ),
               const SizedBox(
                 height: 20,
@@ -130,7 +131,8 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
                     Navigator.pushNamed(
                         context, Routes.latLongFromMapScreenRoute,
                         arguments: LatLonFromMapScreenArgs(
-                            position?.longitude ?? 0, position?.latitude ?? 0));
+                            position?.longitude ?? 0,
+                            position?.latitude ?? 0));
                   },
                   child: const Text('To next screen')),
             ],

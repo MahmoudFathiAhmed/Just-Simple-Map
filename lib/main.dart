@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:get/get.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:locations_work/core/app/resources/languages.dart';
 import 'package:locations_work/core/helpers/bloc_observer.dart';
 import 'package:locations_work/core/helpers/notifications_helper.dart';
@@ -23,6 +24,10 @@ import 'package:locations_work/core/helpers/service_locator.dart';
 import 'package:locations_work/core/routes/app_routes.dart';
 import 'package:locations_work/modules/firebase_notifications/local_data_source/database_helper.dart';
 import 'package:locations_work/modules/firebase_notifications/views/firebase_notifications_screen.dart';
+import 'package:flutter/foundation.dart';
+import 'package:locations_work/modules/hydrated/bloc/counter_bloc.dart';
+import 'package:locations_work/modules/hydrated/cubit/brightness_cubit.dart';
+import 'package:path_provider/path_provider.dart';
 
 // late List<CameraDescription> cameras;
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -40,6 +45,10 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  HydratedBloc.storage = await HydratedStorage.build(
+      storageDirectory: kIsWeb
+          ? HydratedStorage.webStorageDirectory
+          : await getTemporaryDirectory());
   await EasyLocalization.ensureInitialized();
 
   await Firebase.initializeApp();
@@ -96,33 +105,46 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => CounterBloc()..add(CounterStarted()),
+        ),
+        BlocProvider(
+          create: (context) => BrightnessCubit(),
+        ),
+      ],
+      child: BlocBuilder<BrightnessCubit, Brightness>(
+  builder: (context, state) {
     return GetMaterialApp(
-      title: 'Locations Work',
-      debugShowCheckedModeBanner: false,
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      theme: ThemeData.light(
-        useMaterial3: true,
-      ).copyWith(
-          colorScheme: ColorScheme(
-            brightness: Brightness.dark,
-            primary: Colors.blue,
-            onPrimary: Colors.white,
-            secondary: Colors.blueAccent,
-            onSecondary: Colors.white,
-            error: Colors.red,
-            onError: Colors.white,
-            background: Colors.white,
-            onBackground: Colors.black,
-            surface: Colors.grey.shade200,
-            onSurface: Colors.black,
-          ),
-          appBarTheme: AppBarTheme(
-              centerTitle: true,
-              backgroundColor: Colors.blue.withOpacity(0.1),
-              titleTextStyle: Theme.of(context).textTheme.titleLarge)),
-      onGenerateRoute: AppRoutes.onGenerateRoute,
+        title: 'Locations Work',
+        debugShowCheckedModeBanner: false,
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        theme: ThemeData(useMaterial3: true,brightness: state).copyWith(
+            colorScheme: ColorScheme(
+              brightness: state,
+              primary: Colors.blue,
+              onPrimary: Colors.white,
+              secondary: Colors.blueAccent,
+              onSecondary: Colors.white,
+              error: Colors.red,
+              onError: Colors.white,
+              background: Colors.white,
+              onBackground: Colors.black,
+              surface: Colors.grey.shade200,
+              onSurface: Colors.black,
+            ),
+            appBarTheme: AppBarTheme(
+                centerTitle: true,
+                backgroundColor: Colors.blue.withOpacity(0.1),
+                titleTextStyle: Theme.of(context).textTheme.titleLarge)
+        ),
+        onGenerateRoute: AppRoutes.onGenerateRoute,
+      );
+  },
+),
     );
   }
 }

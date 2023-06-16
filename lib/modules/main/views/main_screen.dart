@@ -34,130 +34,154 @@ class _MainScreenState extends State<MainScreen> {
         }
       },
       child: SafeArea(
-        child: Scaffold(
-          appBar: AppBar(
-            leading: IconButton(
-              icon: const Icon(Icons.language),
-              onPressed: () async {
-                await LocalizationHelper.changeLanguage(context);
-                Get.updateLocale(context.locale);
-                await getIt.get<AppPreferences>().changeAppLanguage();
-                Phoenix.rebirth(context);
-              },
-            ),
-          ),
-          body: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            padding: const EdgeInsets.symmetric(vertical: 40),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(
-                          context, Routes.justlatLongScreenRoute);
-                    },
-                    child: const Text('just lat long screen'),
+            child: Scaffold(
+              appBar: AppBar(
+                leading: IconButton(
+                  icon: const Icon(Icons.language),
+                  onPressed: () async {
+                    await LocalizationHelper.changeLanguage(context);
+                    Get.updateLocale(context.locale);
+                    await getIt.get<AppPreferences>().changeAppLanguage();
+                    Phoenix.rebirth(context);
+                  },
+                ),
+              ),
+              body: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                padding: const EdgeInsets.symmetric(vertical: 40),
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                              context, Routes.justlatLongScreenRoute);
+                        },
+                        child: const Text('just lat long screen'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, Routes.googleMapScreenRoute);
+                        },
+                        child: const Text('google maps screen'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, Routes.googleMapScreen2Route);
+                        },
+                        child: const Text('google maps screen2'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, Routes.dateTimeScreenRoute);
+                        },
+                        child: const Text('DateTime screen'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, Routes.screen1Route);
+                        },
+                        child: const Text('To Screen 1'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                              context, Routes.notificationsScreenRoute);
+                        },
+                        child: const Text('To Notifications Screen'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                              context, Routes.dictionaryScreenRoute);
+                        },
+                        child: const Text('To Dictionary Screen'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                              context, Routes.randomColorScreenRoute);
+                        },
+                        child: const Text('Random Color Screen'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                              context, Routes.firebaseNotificationsScreenRoute);
+                        },
+                        child: const Text('Firebase Notifications'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                              context, Routes.selectDateUpdateOrderScreenRoute);
+                        },
+                        child: const Text('Select Date Update Order Screen'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, Routes.contactUsScreenRoute);
+                        },
+                        child: const Text('contact us'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                              context, Routes.radioListtileScreenRoute);
+                        },
+                        child: const Text('Radio Listtile Work'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                              context, Routes.picturePreviewScreenRoute);
+                        },
+                        child: const Text('picture'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, Routes.transScreenRoute);
+                        },
+                        child: const Text('Trans'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, Routes.dateTime2ScreenRoute);
+                        },
+                        child: const Text('dateTime2'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, Routes.counterRoute);
+                        },
+                        child: const Text('Hydrated'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, Routes.dateTestRoute);
+                        },
+                        child: const Text('DateTest'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, Routes.hooksRoute);
+                        },
+                        child: const Text('hooks examples'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, Routes.expandableExampleRoute);
+                        },
+                        child: const Text('expandable example'),
+                      ),
+                    ],
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, Routes.googleMapScreenRoute);
-                    },
-                    child: const Text('google maps screen'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, Routes.dateTimeScreenRoute);
-                    },
-                    child: const Text('DateTime screen'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, Routes.screen1Route);
-                    },
-                    child: const Text('To Screen 1'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(
-                          context, Routes.notificationsScreenRoute);
-                    },
-                    child: const Text('To Notifications Screen'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(
-                          context, Routes.dictionaryScreenRoute);
-                    },
-                    child: const Text('To Dictionary Screen'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(
-                          context, Routes.randomColorScreenRoute);
-                    },
-                    child: const Text('Random Color Screen'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(
-                          context, Routes.firebaseNotificationsScreenRoute);
-                    },
-                    child: const Text('Firebase Notifications'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(
-                          context, Routes.selectDateUpdateOrderScreenRoute);
-                    },
-                    child: const Text('Select Date Update Order Screen'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, Routes.contactUsScreenRoute);
-                    },
-                    child: const Text('contact us'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(
-                          context, Routes.radioListtileScreenRoute);
-                    },
-                    child: const Text('Radio Listtile Work'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(
-                          context, Routes.picturePreviewScreenRoute);
-                    },
-                    child: const Text('picture'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, Routes.transScreenRoute);
-                    },
-                    child: const Text('Trans'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, Routes.dateTime2ScreenRoute);
-                    },
-                    child: const Text('dateTime2'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, Routes.hooksRoute);
-                    },
-                    child: const Text('hooks examples'),
-                  ),
-                ],
+                ),
               ),
             ),
           ),
-        ),
-      ),
     );
   }
 }

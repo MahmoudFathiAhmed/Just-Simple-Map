@@ -4,14 +4,18 @@ import 'package:locations_work/modules/camera/views/camera_screen.dart';
 import 'package:locations_work/modules/camera/views/picture_preview.dart';
 import 'package:locations_work/modules/contact_us/views/contact_us_screen.dart';
 import 'package:locations_work/modules/date_time/views/date_time_screen.dart';
-import 'package:locations_work/modules/date_time/google_map/views/google_map_screen.dart';
+import 'package:locations_work/modules/datetime2/views/date_test_screen.dart';
 import 'package:locations_work/modules/datetime2/views/datetime2_screen.dart';
 import 'package:locations_work/modules/dictionary/views/dictionary_screen.dart';
+import 'package:locations_work/modules/expandable%20widgets/views/expandable_example.dart';
 import 'package:locations_work/modules/firebase_notifications/views/firebase_notifications_screen.dart';
+import 'package:locations_work/modules/google_map/views/google_map_screen.dart';
+import 'package:locations_work/modules/google_map/views/google_map_screen2.dart';
 import 'package:locations_work/modules/hooks/views/firs_hook_example.dart';
 import 'package:locations_work/modules/hooks/views/hooks_screen.dart';
 import 'package:locations_work/modules/hooks/views/second_hook_example.dart';
 import 'package:locations_work/modules/hooks/views/third_hook_example.dart';
+import 'package:locations_work/modules/hydrated/views/counter_screen.dart';
 import 'package:locations_work/modules/just_lat_long/views/just_lat_long_screen.dart';
 import 'package:locations_work/modules/lat_long_from_map_screen/views/lat_long_from_map_screen.dart';
 import 'package:locations_work/modules/main/views/main_screen.dart';
@@ -30,6 +34,7 @@ class Routes {
   static const String justlatLongScreenRoute = '/justLatLongScreen';
   static const String noRouteFound = '/noRouteFound';
   static const String googleMapScreenRoute = '/googleMapScreenRoute';
+  static const String googleMapScreen2Route = '/googleMapScreen2Route';
   static const String latLongFromMapScreenRoute = '/latLongFromMapScreenRoute';
   static const String dateTimeScreenRoute = '/dateTimeScreenRoute';
   static const String screen1Route = '/screen1Route';
@@ -54,6 +59,9 @@ class Routes {
   static const String firstHookRoute = '/firstHookRoute';
   static const String secondHookRoute = '/secondHookRoute';
   static const String thirdHookRoute = '/thirdHookRoute';
+  static const String counterRoute = '/counterRoute';
+  static const String dateTestRoute = '/dateTestRoute';
+  static const String expandableExampleRoute = '/expandableExampleRoute';
 }
 
 class AppRoutes {
@@ -72,6 +80,10 @@ class AppRoutes {
       case Routes.googleMapScreenRoute:
         return MaterialPageRoute(
             builder: (context) => const GoogleMapsScreen());
+      //google maps screen2
+      case Routes.googleMapScreen2Route:
+        return MaterialPageRoute(
+            builder: (context) => const GoogleMapScreen2());
       //date Time Screen
       case Routes.dateTimeScreenRoute:
         return MaterialPageRoute(builder: (context) => const DateTimeScreen());
@@ -137,6 +149,12 @@ class AppRoutes {
         return MaterialPageRoute(builder: (context) => const SecondHookExample());
       case Routes.thirdHookRoute:
         return MaterialPageRoute(builder: (context) => const ThirdHookExample());
+      case Routes.counterRoute:
+        return MaterialPageRoute(builder: (context) => const CounterScreen());
+      case Routes.dateTestRoute:
+        return MaterialPageRoute(builder: (context) => const DateTestScreen());
+      case Routes.expandableExampleRoute:
+        return MaterialPageRoute(builder: (context) => const ExpandableExample());
       default:
         return undefinedRoute();
     }

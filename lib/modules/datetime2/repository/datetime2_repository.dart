@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:locations_work/core/network/error_handler.dart';
 import 'package:locations_work/core/network/failure.dart';
 import 'package:locations_work/core/network/network_constants.dart';
@@ -45,7 +46,7 @@ class DateTime2Repository extends BaseRepository{
         });
 
         if (response.statusCode == 200) {
-          print('******88${DateTime.now().toIso8601String()}');
+          debugPrint('******88${DateTime.now().toIso8601String()}');
           List<dynamic> jsonResponse = response.data;
           //success return data
           return Right(jsonResponse.map((json) => AvailabilityResponse2.fromJson(json)).toList());
