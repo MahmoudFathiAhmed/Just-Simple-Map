@@ -176,6 +176,32 @@ class _MainScreenState extends State<MainScreen> {
                         },
                         child: const Text('expandable example'),
                       ),
+
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, Routes.containersScreenRoute);
+                        },
+                        child: const Text('Containers Screen'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, Routes.checkBoxScreenRoute);
+                        },
+                        child: const Text('Check Box Screen'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, Routes.toggleScreenRoute);
+                        },
+                        child: const Text('Toggle Screen'),
+                      ),
+
+                      // ElevatedButton(
+                      //   onPressed: () {
+                      //     Navigator.pushNamed(context, Routes.liveTrackingRoute);
+                      //   },
+                      //   child: const Text('To Live Tracking Screen'),
+                      // ),
                     ],
                   ),
                 ),

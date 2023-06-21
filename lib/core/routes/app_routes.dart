@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:locations_work/core/routes/routes_arguments.dart';
 import 'package:locations_work/modules/camera/views/camera_screen.dart';
 import 'package:locations_work/modules/camera/views/picture_preview.dart';
+import 'package:locations_work/modules/checkbox/views/check_box_screen.dart';
 import 'package:locations_work/modules/contact_us/views/contact_us_screen.dart';
+import 'package:locations_work/modules/containers/views/containers_screen.dart';
 import 'package:locations_work/modules/date_time/views/date_time_screen.dart';
 import 'package:locations_work/modules/datetime2/views/date_test_screen.dart';
 import 'package:locations_work/modules/datetime2/views/datetime2_screen.dart';
@@ -11,6 +13,7 @@ import 'package:locations_work/modules/expandable%20widgets/views/expandable_exa
 import 'package:locations_work/modules/firebase_notifications/views/firebase_notifications_screen.dart';
 import 'package:locations_work/modules/google_map/views/google_map_screen.dart';
 import 'package:locations_work/modules/google_map/views/google_map_screen2.dart';
+import 'package:locations_work/modules/google_map/views/live_tracking_screen.dart';
 import 'package:locations_work/modules/hooks/views/firs_hook_example.dart';
 import 'package:locations_work/modules/hooks/views/hooks_screen.dart';
 import 'package:locations_work/modules/hooks/views/second_hook_example.dart';
@@ -25,6 +28,7 @@ import 'package:locations_work/modules/random_colors/views/random_colors_screen.
 import 'package:locations_work/modules/screen_navigate/views/screen1.dart';
 import 'package:locations_work/modules/screen_navigate/views/screen2.dart';
 import 'package:locations_work/modules/screen_navigate/views/screen3.dart';
+import 'package:locations_work/modules/toggle/views/toggle_screen.dart';
 import 'package:locations_work/modules/translation/views/trans_screen.dart';
 import 'package:locations_work/modules/update_order/views/select_date_update_order_screen.dart';
 
@@ -62,6 +66,10 @@ class Routes {
   static const String counterRoute = '/counterRoute';
   static const String dateTestRoute = '/dateTestRoute';
   static const String expandableExampleRoute = '/expandableExampleRoute';
+  static const String liveTrackingRoute = '/liveTrackingRoute';
+  static const String containersScreenRoute = '/containersScreenRoute';
+  static const String checkBoxScreenRoute = '/checkBoxScreenRoute';
+  static const String toggleScreenRoute = '/toggleScreenRoute';
 }
 
 class AppRoutes {
@@ -155,6 +163,14 @@ class AppRoutes {
         return MaterialPageRoute(builder: (context) => const DateTestScreen());
       case Routes.expandableExampleRoute:
         return MaterialPageRoute(builder: (context) => const ExpandableExample());
+      case Routes.containersScreenRoute:
+        return MaterialPageRoute(builder: (context) => const ContainersScreen());
+      case Routes.checkBoxScreenRoute:
+        return MaterialPageRoute(builder: (context) => const CheckBoxScreen());
+      case Routes.toggleScreenRoute:
+        return MaterialPageRoute(builder: (context) => const ToggleScreen());
+      // case Routes.liveTrackingRoute:
+      //   return MaterialPageRoute(builder: (context) => const LiveTrackingScreen());
       default:
         return undefinedRoute();
     }
