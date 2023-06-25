@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:locations_work/core/app/functions.dart';
 
 class CheckBoxScreen extends StatefulWidget {
   const CheckBoxScreen({Key? key}) : super(key: key);
@@ -32,34 +33,41 @@ class CheckboxPageContent extends StatelessWidget {
     final checkboxBloc = BlocProvider.of<CheckboxBloc>(context);
 
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          BlocBuilder<CheckboxBloc, CheckboxState>(
-            builder: (context, state) {
-              return Checkbox(
-                value: state.isChecked,
-                onChanged: (bool? value) {
-                  checkboxBloc.add(ToggleCheckboxEvent());
-                },
-              );
-            },
-          ),
-          const SizedBox(height: 10),
-          ElevatedButton(
-            child: const Text('Next Page'),
-            onPressed: () {
-              final state = checkboxBloc.state;
-              if (state.isChecked) {
-                // Navigate to the next page
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => NextPage()),
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            BlocBuilder<CheckboxBloc, CheckboxState>(
+              builder: (context, state) {
+                return Checkbox(
+                  value: state.isChecked,
+                  onChanged: (bool? value) {
+                    checkboxBloc.add(ToggleCheckboxEvent());
+                  },
                 );
-              }
-            },
-          ),
-        ],
+              },
+            ),
+            const SizedBox(height: 10),
+             Row(children: [
+              Icon(Icons.ac_unit_outlined),
+              SizedBox(width: 10),
+              const Text('fafadfadfjadfklajdf;alkdjf jaldjfal;djf fasdkfja;dkjf  fsdfjadfl;j fadfafdadfsda').responsive(),
+            ],),
+            ElevatedButton(
+              child: const Text('Next Page'),
+              onPressed: () {
+                final state = checkboxBloc.state;
+                if (state.isChecked) {
+                  // Navigate to the next page
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => NextPage()),
+                  );
+                }
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

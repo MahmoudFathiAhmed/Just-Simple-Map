@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:locations_work/core/routes/functions.dart';
+import 'package:locations_work/core/app/functions.dart';
 
 part 'time_picker_event.dart';
 part 'time_picker_state.dart';

@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:locations_work/core/helpers/service_locator.dart';
-import 'package:locations_work/core/routes/functions.dart';
+import 'package:locations_work/core/app/functions.dart';
 import 'package:locations_work/modules/date_time/cubit/cubit/date_time_cubit.dart';
 
 class DateTimeScreen extends StatefulWidget {

@@ -2,7 +2,7 @@ import 'package:date_picker_timetable/date_picker_timetable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:locations_work/core/helpers/service_locator.dart';
-import 'package:locations_work/core/routes/functions.dart';
+import 'package:locations_work/core/app/functions.dart';
 import 'package:locations_work/modules/datetime2/bloc/get_availability_bloc/get_availability_bloc.dart';
 import 'package:locations_work/modules/datetime2/bloc/selected_button_bloc/bloc/selected_button_bloc.dart';
 import 'package:locations_work/modules/datetime2/bloc/selected_minutes_button_bloc/bloc/selected_minutes_button_bloc.dart';

@@ -2,7 +2,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:locations_work/core/routes/functions.dart';
+import 'package:locations_work/core/app/functions.dart';
 import 'package:locations_work/modules/date_time/models/available_and_not_available_response.dart';
 import 'package:locations_work/modules/date_time/models/available_response.dart';
 import 'package:locations_work/modules/date_time/repository/date_time_repository.dart';

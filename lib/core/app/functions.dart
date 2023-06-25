@@ -249,3 +249,12 @@ extension DateTimeIsNotToday on DateTime {
         day != DateTime.now().day;
   }
 }
+extension ResponsiveText on Text {
+  Widget responsive() {
+    return Expanded(
+      child: Text(
+        data!,
+      ),
+    );
+  }
+}

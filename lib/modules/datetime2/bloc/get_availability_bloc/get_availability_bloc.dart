@@ -4,7 +4,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:locations_work/core/routes/functions.dart';
+import 'package:locations_work/core/app/functions.dart';
 
 import 'package:locations_work/modules/datetime2/repository/datetime2_repository.dart';
 
