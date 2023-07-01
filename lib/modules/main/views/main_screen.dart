@@ -195,6 +195,18 @@ class _MainScreenState extends State<MainScreen> {
                         },
                         child: const Text('Toggle Screen'),
                       ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, Routes.segmentedRoute);
+                        },
+                        child: const Text('Segmented Button'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, Routes.toggleMoreThanButtonRoute);
+                        },
+                        child: const Text('ToggleMoreThanOneButton'),
+                      ),
 
                       // ElevatedButton(
                       //   onPressed: () {

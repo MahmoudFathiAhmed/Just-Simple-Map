@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:locations_work/core/app/functions.dart';
 import 'package:locations_work/modules/checkbox/widgets/offer_widget.dart';
-
 class CheckBoxScreen extends StatefulWidget {
   const CheckBoxScreen({Key? key}) : super(key: key);
 
@@ -119,6 +118,7 @@ class CheckboxPageContent extends StatelessWidget {
                 ],
               ),
             ),
+            const SizedBox(height: 20),
             const SizedBox(height: 20),
             ElevatedButton(
               child: const Text('Next Page'),

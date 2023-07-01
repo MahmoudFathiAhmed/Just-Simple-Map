@@ -13,7 +13,6 @@ import 'package:locations_work/modules/expandable%20widgets/views/expandable_exa
 import 'package:locations_work/modules/firebase_notifications/views/firebase_notifications_screen.dart';
 import 'package:locations_work/modules/google_map/views/google_map_screen.dart';
 import 'package:locations_work/modules/google_map/views/google_map_screen2.dart';
-import 'package:locations_work/modules/google_map/views/live_tracking_screen.dart';
 import 'package:locations_work/modules/hooks/views/firs_hook_example.dart';
 import 'package:locations_work/modules/hooks/views/hooks_screen.dart';
 import 'package:locations_work/modules/hooks/views/second_hook_example.dart';
@@ -28,7 +27,9 @@ import 'package:locations_work/modules/random_colors/views/random_colors_screen.
 import 'package:locations_work/modules/screen_navigate/views/screen1.dart';
 import 'package:locations_work/modules/screen_navigate/views/screen2.dart';
 import 'package:locations_work/modules/screen_navigate/views/screen3.dart';
+import 'package:locations_work/modules/segmented/views/segmented_screen.dart';
 import 'package:locations_work/modules/toggle/views/toggle_screen.dart';
+import 'package:locations_work/modules/toggle_more_than_button/views/toggle_more_than_button_screen.dart';
 import 'package:locations_work/modules/translation/views/trans_screen.dart';
 import 'package:locations_work/modules/update_order/views/select_date_update_order_screen.dart';
 
@@ -70,6 +71,8 @@ class Routes {
   static const String containersScreenRoute = '/containersScreenRoute';
   static const String checkBoxScreenRoute = '/checkBoxScreenRoute';
   static const String toggleScreenRoute = '/toggleScreenRoute';
+  static const String segmentedRoute = '/segmentedRoute';
+  static const String toggleMoreThanButtonRoute = '/toggleMoreThanButtonRoute';
 }
 
 class AppRoutes {
@@ -169,6 +172,10 @@ class AppRoutes {
         return MaterialPageRoute(builder: (context) => const CheckBoxScreen());
       case Routes.toggleScreenRoute:
         return MaterialPageRoute(builder: (context) => const ToggleScreen());
+      case Routes.segmentedRoute:
+        return MaterialPageRoute(builder: (context) => const SegmentedScreen());
+      case Routes.toggleMoreThanButtonRoute:
+        return MaterialPageRoute(builder: (context) => const ToggleMoreThanButtonScreen());
       // case Routes.liveTrackingRoute:
       //   return MaterialPageRoute(builder: (context) => const LiveTrackingScreen());
       default:

@@ -1,6 +1,7 @@
 import 'package:date_picker_timetable/date_picker_timetable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:locations_work/core/app/components.dart';
 import 'package:locations_work/core/helpers/service_locator.dart';
 import 'package:locations_work/core/app/functions.dart';
 import 'package:locations_work/modules/datetime2/bloc/get_availability_bloc/get_availability_bloc.dart';
@@ -84,23 +85,19 @@ class DateTime2Screen extends StatelessWidget {
                                                 .add(GetWaitingEvent());
                                           });
                                         },
-                                        child: GridView.builder(
-                                            gridDelegate:
-                                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                              crossAxisSpacing: 10,
-                                              crossAxisCount: 4,
-                                              mainAxisExtent: 50,
-                                              mainAxisSpacing: 10,
-                                            ),
-                                            padding: const EdgeInsets.symmetric(
-                                                vertical: 10),
-                                            physics:
-                                                const AlwaysScrollableScrollPhysics(
-                                                    parent:
-                                                        BouncingScrollPhysics()),
-                                            shrinkWrap: true,
-                                            itemCount: allHoursList.length,
-                                            itemBuilder: (context, index) {
+                                        child: SingleChildScrollView(
+                                          physics:
+                                              const AlwaysScrollableScrollPhysics(
+                                                  parent:
+                                                      BouncingScrollPhysics()),
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 20),
+                                          child: MySpecialMagicGridView(
+                                            alignment: WrapAlignment.start,
+                                            spacing: 10,
+                                            runSpacing: 10,
+                                            listCount: allHoursList.length,
+                                            generatedWidget: (index) {
                                               List<DateTime> minutesList =
                                                   allHoursList[index]
                                                       .getFifteenMinutesIntervals();
@@ -122,15 +119,15 @@ class DateTime2Screen extends StatelessWidget {
                                                                 index])
                                                         ? null
                                                         : () {
-                                                      debugPrint('****** ${isImpossibleToMakeOrder(
-                                                          time: allHoursList[
-                                                          index])} ******');
+                                                            debugPrint(
+                                                                '****** ${isImpossibleToMakeOrder(time: allHoursList[index])} ******');
                                                             debugPrint(
                                                                 '*****${allHoursList[index]}');
                                                             showModalBottomSheet(
                                                               elevation: 10,
                                                               backgroundColor:
                                                                   Colors.white,
+                                                              useSafeArea: true,
                                                               context: context,
                                                               builder: (ctx) {
                                                                 return BlocProvider(
@@ -155,41 +152,39 @@ class DateTime2Screen extends StatelessWidget {
                                                                       return SizedBox(
                                                                         height:
                                                                             200,
+                                                                        width: double
+                                                                            .infinity,
                                                                         child:
                                                                             Column(
                                                                           children: [
-                                                                            SizedBox(
-                                                                              height: 65,
-                                                                              child: ListView.builder(
-                                                                                physics: const BouncingScrollPhysics(),
-                                                                                scrollDirection: Axis.horizontal,
-                                                                                itemCount: minutesList.length,
-                                                                                padding: const EdgeInsets.all(10),
-                                                                                itemBuilder: (context, index) {
+                                                                            Padding(
+                                                                              padding: const EdgeInsets.all(20.0),
+                                                                              child: MySpecialMagicGridView(
+                                                                                listCount: minutesList.length,
+                                                                                spacing: 10,
+                                                                                generatedWidget: (index) {
                                                                                   return MinutesButtonWidget(
                                                                                       hour: minutesList[index],
-                                                                                      buttonColor:  isImpossibleToMakeOrder2(time: minutesList[index])?Colors.grey.shade300:selectedIndex == minutesList[index]?Colors.blue:Colors.white,
+                                                                                      buttonColor: isImpossibleToMakeOrder2(time: minutesList[index])
+                                                                                          ? Colors.grey.shade300
+                                                                                          : selectedIndex == minutesList[index]
+                                                                                              ? Colors.blue
+                                                                                              : Colors.white,
                                                                                       // selected: selectedIndex == minutesList[index],
                                                                                       availabilityColor: minutesAvailableColor(myDate: minutesList[index], notAvailable: notAvailable),
-                                                                                      onTap:
-                                                                                      isImpossibleToMakeOrder2(
-                                                                                          time: minutesList[
-                                                                                          index])
+                                                                                      onTap: isImpossibleToMakeOrder2(time: minutesList[index])
                                                                                           ? null
-                                                                                          :
-                                                                                      () {
-                                                                                        debugPrint('****** ${isImpossibleToMakeOrder2(
-                                                                                            time: minutesList[
-                                                                                            index])} ******');
-                                                                                        selectedButtonContext.read<SelectedButtonBloc>().add(SelectedButtonChangedEvent(minutesList[index]));
-                                                                                        selectedMinutesButtonContext.read<SelectedMinutesButtonBloc>().add(SelectMinutesButtonEvent(minutesList[index]));
-                                                                                        finalDateSelected = minutesList[index].toString();
-                                                                                        debugPrint('*&^% Hour Selected: ${minutesList[index]} ');
-                                                                                      }
-                                                                                      );
+                                                                                          : () {
+                                                                                              debugPrint('****** ${isImpossibleToMakeOrder2(time: minutesList[index])} ******');
+                                                                                              selectedButtonContext.read<SelectedButtonBloc>().add(SelectedButtonChangedEvent(minutesList[index]));
+                                                                                              selectedMinutesButtonContext.read<SelectedMinutesButtonBloc>().add(SelectMinutesButtonEvent(minutesList[index]));
+                                                                                              finalDateSelected = minutesList[index].toString();
+                                                                                              debugPrint('*&^% Hour Selected: ${minutesList[index]} ');
+                                                                                            });
                                                                                 },
                                                                               ),
                                                                             ),
+                                                                            const SizedBox(height: 10),
                                                                             ElevatedButton(
                                                                                 onPressed: () {
                                                                                   Navigator.pop(context);
@@ -205,8 +200,9 @@ class DateTime2Screen extends StatelessWidget {
                                                             );
                                                           },
                                               );
-                                            }),
-                                      )
+                                            },
+                                          ),
+                                        ))
                                     : const Center(
                                         child: CircularProgressIndicator()),
                             Text(finalDateSelected),
