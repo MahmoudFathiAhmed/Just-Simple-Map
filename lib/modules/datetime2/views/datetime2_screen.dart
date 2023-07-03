@@ -127,7 +127,6 @@ class DateTime2Screen extends StatelessWidget {
                                                               elevation: 10,
                                                               backgroundColor:
                                                                   Colors.white,
-                                                              useSafeArea: true,
                                                               context: context,
                                                               builder: (ctx) {
                                                                 return BlocProvider(
@@ -149,49 +148,50 @@ class DateTime2Screen extends StatelessWidget {
                                                                             : isWaiting =
                                                                                 false;
                                                                       }
-                                                                      return SizedBox(
-                                                                        height:
-                                                                            200,
-                                                                        width: double
-                                                                            .infinity,
+                                                                      return FractionallySizedBox(
+                                                                        heightFactor:
+                                                                            MediaQuery.orientationOf(context)==Orientation.portrait?0.3: 0.7,
                                                                         child:
-                                                                            Column(
+                                                                            Container(
+                                                                              width: MediaQuery.sizeOf(context).width,
+                                                                              child: Column(
                                                                           children: [
-                                                                            Padding(
-                                                                              padding: const EdgeInsets.all(20.0),
-                                                                              child: MySpecialMagicGridView(
-                                                                                listCount: minutesList.length,
-                                                                                spacing: 10,
-                                                                                generatedWidget: (index) {
-                                                                                  return MinutesButtonWidget(
-                                                                                      hour: minutesList[index],
-                                                                                      buttonColor: isImpossibleToMakeOrder2(time: minutesList[index])
-                                                                                          ? Colors.grey.shade300
-                                                                                          : selectedIndex == minutesList[index]
-                                                                                              ? Colors.blue
-                                                                                              : Colors.white,
-                                                                                      // selected: selectedIndex == minutesList[index],
-                                                                                      availabilityColor: minutesAvailableColor(myDate: minutesList[index], notAvailable: notAvailable),
-                                                                                      onTap: isImpossibleToMakeOrder2(time: minutesList[index])
-                                                                                          ? null
-                                                                                          : () {
-                                                                                              debugPrint('****** ${isImpossibleToMakeOrder2(time: minutesList[index])} ******');
-                                                                                              selectedButtonContext.read<SelectedButtonBloc>().add(SelectedButtonChangedEvent(minutesList[index]));
-                                                                                              selectedMinutesButtonContext.read<SelectedMinutesButtonBloc>().add(SelectMinutesButtonEvent(minutesList[index]));
-                                                                                              finalDateSelected = minutesList[index].toString();
-                                                                                              debugPrint('*&^% Hour Selected: ${minutesList[index]} ');
-                                                                                            });
-                                                                                },
+                                                                              Padding(
+                                                                                padding: const EdgeInsets.all(20.0),
+                                                                                child: MySpecialMagicGridView(
+                                                                                  listCount: minutesList.length,
+                                                                                  spacing: 10,
+                                                                                  generatedWidget: (index) {
+                                                                                    return MinutesButtonWidget(
+                                                                                        hour: minutesList[index],
+                                                                                        buttonColor: isImpossibleToMakeOrder2(time: minutesList[index])
+                                                                                            ? Colors.grey.shade300
+                                                                                            : selectedIndex == minutesList[index]
+                                                                                                ? Colors.blue
+                                                                                                : Colors.white,
+                                                                                        // selected: selectedIndex == minutesList[index],
+                                                                                        availabilityColor: minutesAvailableColor(myDate: minutesList[index], notAvailable: notAvailable),
+                                                                                        onTap: isImpossibleToMakeOrder2(time: minutesList[index])
+                                                                                            ? null
+                                                                                            : () {
+                                                                                                debugPrint('****** ${isImpossibleToMakeOrder2(time: minutesList[index])} ******');
+                                                                                                selectedButtonContext.read<SelectedButtonBloc>().add(SelectedButtonChangedEvent(minutesList[index]));
+                                                                                                selectedMinutesButtonContext.read<SelectedMinutesButtonBloc>().add(SelectMinutesButtonEvent(minutesList[index]));
+                                                                                                finalDateSelected = minutesList[index].toString();
+                                                                                                debugPrint('*&^% Hour Selected: ${minutesList[index]} ');
+                                                                                              });
+                                                                                  },
+                                                                                ),
                                                                               ),
-                                                                            ),
-                                                                            const SizedBox(height: 10),
-                                                                            ElevatedButton(
-                                                                                onPressed: () {
-                                                                                  Navigator.pop(context);
-                                                                                },
-                                                                                child: const Text('cancel'))
+                                                                              const SizedBox(height: 10),
+                                                                              ElevatedButton(
+                                                                                  onPressed: () {
+                                                                                    Navigator.pop(context);
+                                                                                  },
+                                                                                  child: const Text('cancel'))
                                                                           ],
                                                                         ),
+                                                                            ),
                                                                       );
                                                                     },
                                                                   ),

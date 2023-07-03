@@ -23,8 +23,8 @@ class HourButtonWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           onTap: onTap,
           child: Container(
-            height: 40,
-            width: MediaQuery.of(context).size.width * .2,
+            height: 35,
+            width: 80,
             decoration: BoxDecoration(
                 color: color,
                 borderRadius: BorderRadius.circular(10),

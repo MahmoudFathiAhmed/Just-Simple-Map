@@ -16,10 +16,11 @@ class ToggleButtonsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => ButtonToggleBloc(),
-      child: BlocBuilder<ButtonToggleBloc, ButtonIndex>(
+      child: BlocBuilder<ButtonToggleBloc, ButtonIndex?>(
         builder: (buttonToggleContext, indexState) {
           return MySpecialMagicGridView(
             listCount: ButtonIndex.values.length,
+            alignment: WrapAlignment.center,
             generatedWidget: (index) => ElevatedButton(
               onPressed: () {
                 buttonToggleContext
@@ -28,6 +29,7 @@ class ToggleButtonsWidget extends StatelessWidget {
                 onButtonPressed.call(ButtonIndex.values[index].description);
               },
               style: ElevatedButton.styleFrom(
+                fixedSize: Size(97,20),
                 backgroundColor: indexState == ButtonIndex.values[index]
                     ? Colors.amber
                     : Colors.white,

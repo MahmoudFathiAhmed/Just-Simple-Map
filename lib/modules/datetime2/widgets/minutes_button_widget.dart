@@ -22,8 +22,8 @@ class MinutesButtonWidget extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(10),
         child: Container(
-          height: MediaQuery.of(context).size.height * .06,
-          width: MediaQuery.of(context).size.width * .19,
+          height: 35,
+          width: 80,
           decoration: BoxDecoration(
             color:
             // isImpossibleToMakeOrder(

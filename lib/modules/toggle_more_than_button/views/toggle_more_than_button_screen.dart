@@ -26,7 +26,9 @@ class ToggleMoreThanButtonScreen extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
                 onPressed: () {
-                  debugPrint(buttonPressed??'button 1');
+                  // if(buttonPressed!=null)
+                  //   debugPrint(buttonPressed);
+                    debugPrint(buttonPressed??'button 1');
                 }, child: const Text('just print selected Button'))
           ],
         ),
