@@ -18,6 +18,8 @@ import 'package:locations_work/modules/hooks/views/hooks_screen.dart';
 import 'package:locations_work/modules/hooks/views/second_hook_example.dart';
 import 'package:locations_work/modules/hooks/views/third_hook_example.dart';
 import 'package:locations_work/modules/hydrated/views/counter_screen.dart';
+import 'package:locations_work/modules/just_example/views/just_example1.dart';
+import 'package:locations_work/modules/just_example/views/just_example2.dart';
 import 'package:locations_work/modules/just_lat_long/views/just_lat_long_screen.dart';
 import 'package:locations_work/modules/lat_long_from_map_screen/views/lat_long_from_map_screen.dart';
 import 'package:locations_work/modules/main/views/main_screen.dart';
@@ -73,6 +75,8 @@ class Routes {
   static const String toggleScreenRoute = '/toggleScreenRoute';
   static const String segmentedRoute = '/segmentedRoute';
   static const String toggleMoreThanButtonRoute = '/toggleMoreThanButtonRoute';
+  static const String justExample1Route = '/justExample1Route';
+  static const String justExample2Route = '/justExample2Route';
 }
 
 class AppRoutes {
@@ -176,6 +180,10 @@ class AppRoutes {
         return MaterialPageRoute(builder: (context) => const SegmentedScreen());
       case Routes.toggleMoreThanButtonRoute:
         return MaterialPageRoute(builder: (context) => const ToggleMoreThanButtonScreen());
+      case Routes.justExample1Route:
+        return MaterialPageRoute(builder: (context) => const JustExample1());
+      case Routes.justExample2Route:
+        return MaterialPageRoute(builder: (context) => const JustExample2());
       // case Routes.liveTrackingRoute:
       //   return MaterialPageRoute(builder: (context) => const LiveTrackingScreen());
       default:
