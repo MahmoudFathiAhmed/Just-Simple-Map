@@ -52,6 +52,7 @@ Future<void> main() async {
   await EasyLocalization.ensureInitialized();
 
   await Firebase.initializeApp();
+  // await FlutterConfig.loadEnvVariables();
   final fcmToken = await FirebaseMessaging.instance.getToken();
 
   debugPrint('********$fcmToken***');

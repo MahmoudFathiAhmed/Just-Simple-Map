@@ -34,6 +34,7 @@ import 'package:locations_work/modules/toggle/views/toggle_screen.dart';
 import 'package:locations_work/modules/toggle_more_than_button/views/toggle_more_than_button_screen.dart';
 import 'package:locations_work/modules/translation/views/trans_screen.dart';
 import 'package:locations_work/modules/update_order/views/select_date_update_order_screen.dart';
+import 'package:locations_work/modules/widget_marker/views/widget_marker_screen.dart';
 
 class Routes {
   static const String initialRoute = '/';
@@ -77,6 +78,7 @@ class Routes {
   static const String toggleMoreThanButtonRoute = '/toggleMoreThanButtonRoute';
   static const String justExample1Route = '/justExample1Route';
   static const String justExample2Route = '/justExample2Route';
+  static const String widgetMarkerRoute = '/widgetMarkerRoute';
 }
 
 class AppRoutes {
@@ -184,6 +186,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (context) => const JustExample1());
       case Routes.justExample2Route:
         return MaterialPageRoute(builder: (context) => const JustExample2());
+      case Routes.widgetMarkerRoute:
+        return MaterialPageRoute(builder: (context) => const WidgetMarkerScreen());
       // case Routes.liveTrackingRoute:
       //   return MaterialPageRoute(builder: (context) => const LiveTrackingScreen());
       default:

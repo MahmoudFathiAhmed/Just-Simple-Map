@@ -48,6 +48,7 @@ dependencies:
   path_provider: ^2.0.15
   google_fonts:
   flutter_polyline_points: ^1.0.0
+#  flutter_config: ^2.0.1
 #  location: ^4.4.0
 
 dev_dependencies:
@@ -61,10 +62,10 @@ flutter:
     - assets/json/available_time.json
     - assets/images/
     - assets/translations/
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: mobileToolkit
+      fonts:
+        - asset: assets/fonts/mobileToolkit.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
