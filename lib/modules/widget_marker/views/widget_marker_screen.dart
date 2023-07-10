@@ -10,19 +10,19 @@ import 'package:locations_work/modules/widget_marker/widget/custom_marker_widget
 List<Map<String, dynamic>> data = [
   {
     'id': '1',
-    'globalKey': GlobalKey(),
+    // 'globalKey': GlobalKey(),
     'position': const LatLng(1.32, 103.80),
     'widget': const CustomMarkerWidget(price: 100),
   },
   {
     'id': '2',
-    'globalKey': GlobalKey(),
+    // 'globalKey': GlobalKey(),
     'position': const LatLng(1.323, 103.82),
     'widget': const CustomMarkerWidget(price: 200),
   },
   {
     'id': '3',
-    'globalKey': GlobalKey(),
+    // 'globalKey': GlobalKey(),
     'position': const LatLng(1.325, 103.87),
     'widget': const CustomMarkerWidget(price: 300),
   },
@@ -37,6 +37,7 @@ class WidgetMarkerScreen extends StatefulWidget {
 
 class _WidgetMarkerScreenState extends State<WidgetMarkerScreen> {
   final Completer<GoogleMapController> _controller = Completer();
+  final GlobalKey globalKey = GlobalKey();
   final Map<String, Marker> _markers = {};
   static const CameraPosition _cameraPosition = CameraPosition(
     bearing: 0.0,
@@ -73,7 +74,8 @@ class _WidgetMarkerScreenState extends State<WidgetMarkerScreen> {
                       -MediaQuery.sizeOf(context).height / 2,
                     ),
                     child: RepaintBoundary(
-                      key: data[i]['globalKey'],
+                      key: globalKey,
+                      // key: data[i]['globalKey'],
                       child: data[i]['widget'],
                     ),
                   )
@@ -96,7 +98,8 @@ class _WidgetMarkerScreenState extends State<WidgetMarkerScreen> {
   }
 
   Future<Marker> _generateMarkerFromWidgets(Map<String, dynamic> data) async {
-    RenderRepaintBoundary boundary = data['globalKey']
+    RenderRepaintBoundary boundary = globalKey
+    // RenderRepaintBoundary boundary = data['globalKey']
         .currentContext
     !.findRenderObject() as RenderRepaintBoundary;
     ui.Image image = await boundary.toImage(pixelRatio: 2);
