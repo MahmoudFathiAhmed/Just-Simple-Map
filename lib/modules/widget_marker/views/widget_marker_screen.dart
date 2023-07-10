@@ -37,7 +37,7 @@ class WidgetMarkerScreen extends StatefulWidget {
 
 class _WidgetMarkerScreenState extends State<WidgetMarkerScreen> {
   final Completer<GoogleMapController> _controller = Completer();
-  Map<String, Marker> _markers = {};
+  final Map<String, Marker> _markers = {};
   static const CameraPosition _cameraPosition = CameraPosition(
     bearing: 0.0,
     target: LatLng(1.35, 103.8),
@@ -83,10 +83,13 @@ class _WidgetMarkerScreenState extends State<WidgetMarkerScreen> {
   }
 
   Future<void> _onBuildCompleted() async {
-    await Future.wait(data.map((value) async {
-      Marker marker = await _generateMarkerFromWidgets(value);
-      _markers[marker.markerId.value] = marker;
-    }));
+    await Future.wait(
+      data.map((value) async {
+        await Future.delayed(const Duration(milliseconds: 20)); // Add a delay here
+        Marker marker = await _generateMarkerFromWidgets(value);
+        _markers[marker.markerId.value] = marker;
+      }),
+    );
     setState(() {
       _isLoaded = true;
     });
@@ -95,13 +98,13 @@ class _WidgetMarkerScreenState extends State<WidgetMarkerScreen> {
   Future<Marker> _generateMarkerFromWidgets(Map<String, dynamic> data) async {
     RenderRepaintBoundary boundary = data['globalKey']
         .currentContext
-        ?.findRenderedObject() as RenderRepaintBoundary;
+    !.findRenderObject() as RenderRepaintBoundary;
     ui.Image image = await boundary.toImage(pixelRatio: 2);
     ByteData? byteData = await image.toByteData(format: ui.ImageByteFormat.png);
     return Marker(
-      markerId: MarkerId(data['id']),
-      position: data['position'],
-      icon: BitmapDescriptor.fromBytes(byteData!.buffer.asUint8List())
+        markerId: MarkerId(data['id']),
+        position: data['position'],
+        icon: BitmapDescriptor.fromBytes(byteData!.buffer.asUint8List())
     );
   }
 }

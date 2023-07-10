@@ -25,7 +25,7 @@ class CustomMarkerWidget extends StatelessWidget {
                 ],
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
-                    color: Colors.deepPurple.withOpacity(.3), width: 8)),
+                    color: Colors.deepPurple.withOpacity(.8), width: 8)),
             child: Center(
               child: Text(
                 price.toString(),
@@ -38,13 +38,39 @@ class CustomMarkerWidget extends StatelessWidget {
             ),
           ),
           Transform.rotate(
-            angle: math.pi/2,
-            child: Icon(Icons.play_arrow_rounded,
-                size: 50, color: Colors.deepPurple.withOpacity(.3),
+            angle: math.pi,
+            child: CustomPaint(
+              painter: TrianglePainter(),
+              child: const SizedBox(
+                width: 15,
+                height: 15,
+              ),
             ),
-          )
+          ),
         ],
       ),
     );
+  }
+}
+
+class TrianglePainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    Paint paint = Paint()
+      ..color = Colors.deepPurple.withOpacity(.8)
+      ..style = PaintingStyle.fill;
+
+    Path path = Path();
+    path.moveTo(size.width / 2, 0);
+    path.lineTo(0, size.height);
+    path.lineTo(size.width, size.height);
+    path.close();
+
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
   }
 }
