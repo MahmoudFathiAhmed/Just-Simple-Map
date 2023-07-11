@@ -12,7 +12,8 @@
         android:color="@color/my_notification_bg_color"
         >
         <meta-data android:name="com.google.android.geo.API_KEY"
-           android:value="AIzaSyAHKzJO0s14FyH-RiuQ4buamD6g81Whu7A"/>
+           android:value="AIzaSyD9DZPa_jBp3S-gSLoNjDor5xOlvrAAKT0"/>
+<!--           android:value="AIzaSyAHKzJO0s14FyH-RiuQ4buamD6g81Whu7A"/>-->
         <meta-data
          android:name="com.google.firebase.messaging.default_notification_icon"
          android:resource="@mipmap/ic_launcher" />

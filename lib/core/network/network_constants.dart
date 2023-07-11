@@ -17,4 +17,6 @@ class NetworkConstants {
       'https://mahmoudfathiahmed.github.io/availabity_status_api/trans.json';
   static const String getOrder =
       'https://mahmoudfathiahmed.github.io/availabity_status_api/get_order.json';
+  static const String tracking =
+      'https://mahmoudfathiahmed.github.io/availabity_status_api/tracking_api.json';
 }

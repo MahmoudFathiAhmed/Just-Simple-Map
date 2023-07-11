@@ -220,13 +220,12 @@ class _MainScreenState extends State<MainScreen> {
                         },
                         child: const Text('\nTo Widget Marker Screen\n'),
                       ),
-
-                      // ElevatedButton(
-                      //   onPressed: () {
-                      //     Navigator.pushNamed(context, Routes.liveTrackingRoute);
-                      //   },
-                      //   child: const Text('To Live Tracking Screen'),
-                      // ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, Routes.liveTrackingRoute);
+                        },
+                        child: const Text('To Live Tracking Screen'),
+                      ),
                     ],
                   ),
                 ),

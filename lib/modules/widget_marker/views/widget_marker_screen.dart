@@ -5,26 +5,29 @@ import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 import 'package:flutter/rendering.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:locations_work/core/utils/image_assets.dart';
 import 'package:locations_work/modules/widget_marker/widget/custom_marker_widget.dart';
-
 List<Map<String, dynamic>> data = [
   {
     'id': '1',
-    // 'globalKey': GlobalKey(),
+    'globalKey': GlobalKey(),
     'position': const LatLng(1.32, 103.80),
-    'widget': const CustomMarkerWidget(price: 100),
+    'widget': const CustomMarkerWidget(asset: ImageAssets.faceLogo),
+    // 'widget': const CustomMarkerWidget(price: 100),
   },
   {
     'id': '2',
-    // 'globalKey': GlobalKey(),
+    'globalKey': GlobalKey(),
     'position': const LatLng(1.323, 103.82),
-    'widget': const CustomMarkerWidget(price: 200),
+    'widget': const CustomMarkerWidget(asset: ImageAssets.whatsLogo),
+    // 'widget': const CustomMarkerWidget(price: 200),
   },
   {
     'id': '3',
-    // 'globalKey': GlobalKey(),
+    'globalKey': GlobalKey(),
     'position': const LatLng(1.325, 103.87),
-    'widget': const CustomMarkerWidget(price: 300),
+    'widget': const CustomMarkerWidget(asset: ImageAssets.twitterLogo),
+    // 'widget': const CustomMarkerWidget(price: 300),
   },
 ];
 
@@ -74,8 +77,7 @@ class _WidgetMarkerScreenState extends State<WidgetMarkerScreen> {
                       -MediaQuery.sizeOf(context).height / 2,
                     ),
                     child: RepaintBoundary(
-                      key: globalKey,
-                      // key: data[i]['globalKey'],
+                      key: data[i]['globalKey'],
                       child: data[i]['widget'],
                     ),
                   )
@@ -87,7 +89,7 @@ class _WidgetMarkerScreenState extends State<WidgetMarkerScreen> {
   Future<void> _onBuildCompleted() async {
     await Future.wait(
       data.map((value) async {
-        await Future.delayed(const Duration(milliseconds: 20)); // Add a delay here
+        await Future.delayed(const Duration(milliseconds: 1000)); // Add a delay here
         Marker marker = await _generateMarkerFromWidgets(value);
         _markers[marker.markerId.value] = marker;
       }),
@@ -98,8 +100,7 @@ class _WidgetMarkerScreenState extends State<WidgetMarkerScreen> {
   }
 
   Future<Marker> _generateMarkerFromWidgets(Map<String, dynamic> data) async {
-    RenderRepaintBoundary boundary = globalKey
-    // RenderRepaintBoundary boundary = data['globalKey']
+    RenderRepaintBoundary boundary = data['globalKey']
         .currentContext
     !.findRenderObject() as RenderRepaintBoundary;
     ui.Image image = await boundary.toImage(pixelRatio: 2);

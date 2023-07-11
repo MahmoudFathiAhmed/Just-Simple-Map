@@ -13,6 +13,7 @@ import 'package:locations_work/modules/expandable%20widgets/views/expandable_exa
 import 'package:locations_work/modules/firebase_notifications/views/firebase_notifications_screen.dart';
 import 'package:locations_work/modules/google_map/views/google_map_screen.dart';
 import 'package:locations_work/modules/google_map/views/google_map_screen2.dart';
+import 'package:locations_work/modules/google_map/views/live_tracking_screen.dart';
 import 'package:locations_work/modules/hooks/views/firs_hook_example.dart';
 import 'package:locations_work/modules/hooks/views/hooks_screen.dart';
 import 'package:locations_work/modules/hooks/views/second_hook_example.dart';
@@ -188,8 +189,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (context) => const JustExample2());
       case Routes.widgetMarkerRoute:
         return MaterialPageRoute(builder: (context) => const WidgetMarkerScreen());
-      // case Routes.liveTrackingRoute:
-      //   return MaterialPageRoute(builder: (context) => const LiveTrackingScreen());
+      case Routes.liveTrackingRoute:
+        return MaterialPageRoute(builder: (context) => const LiveTrackingScreen());
       default:
         return undefinedRoute();
     }

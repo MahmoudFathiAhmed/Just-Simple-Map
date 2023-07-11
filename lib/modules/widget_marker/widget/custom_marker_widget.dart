@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-class CustomMarkerWidget extends StatelessWidget {
-  final double price;
+import 'package:flutter_svg/flutter_svg.dart';
 
-  const CustomMarkerWidget({super.key, required this.price});
+class CustomMarkerWidget extends StatelessWidget {
+  // final double price;
+  final String asset;
+
+  const CustomMarkerWidget({
+    super.key,
+    // required this.price,
+    required this.asset,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,16 +33,16 @@ class CustomMarkerWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
                     color: Colors.deepPurple.withOpacity(.8), width: 8)),
-            child: Center(
-              child: Text(
-                price.toString(),
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Colors.deepPurple,
-                  fontSize: 18,
+            child: Center(child: SvgPicture.asset(asset,height: 60,)
+                // Text(
+                //   price.toString(),
+                //   textAlign: TextAlign.center,
+                //   style: const TextStyle(
+                //     color: Colors.deepPurple,
+                //     fontSize: 18,
+                //   ),
+                // ),
                 ),
-              ),
-            ),
           ),
           Transform.rotate(
             angle: math.pi,
